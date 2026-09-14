@@ -1,0 +1,3 @@
+"""
+StockSense AI Backend Package
+"""

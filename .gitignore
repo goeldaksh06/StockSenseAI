@@ -1,0 +1,46 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.venv/
+venv_flask/
+venv_fastapi/
+backend/venv/
+frontend/venv/
+
+# IDE/editor
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# Python packaging
+dist/
+build/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# model artifacts
+backend/ml/models/*.pkl
+backend/ml/models/training_log.csv
+
+# database
+*.db
+
+# logs
+*.log
+
+# OneDrive temp
+~$*
