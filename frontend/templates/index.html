@@ -282,12 +282,12 @@
           if (name.startsWith('xgboost')) rows.push({ name, ...m });
         }
         tbody.innerHTML = '';
-        let bestAcc = Math.max(...rows.map(r => r.directional_accuracy || 0));
+        let bestAcc = Math.max(...rows.filter(r => r.name !== 'previous_close').map(r => r.directional_accuracy || 0));
         rows.forEach(r => {
           const tr = document.createElement('tr');
-          if (r.directional_accuracy === bestAcc) tr.className = 'best-row';
+          if (r.name !== 'previous_close' && r.directional_accuracy === bestAcc) tr.className = 'best-row';
           tr.innerHTML = `<td>${r.name}</td><td>${(r.mae ?? 0).toFixed(2)}</td><td>${(r.rmse ?? 0).toFixed(2)}</td>` +
-            `<td>${(r.mape ?? 0).toFixed(2)}%</td><td>${(r.r2 ?? 0).toFixed(3)}</td><td>${((r.directional_accuracy ?? 0) * 100).toFixed(1)}%</td>`;
+            `<td>${(r.mape ?? 0).toFixed(2)}%</td><td>${(r.r2 ?? 0).toFixed(3)}</td><td>${r.name === 'previous_close' ? 'N/A' : ((r.directional_accuracy ?? 0) * 100).toFixed(1) + '%'}</td>`;
           tbody.appendChild(tr);
         });
       } catch (e) {
@@ -309,7 +309,8 @@
           <div class="stat"><div class="label">Strategy Sharpe<span class="info-icon" data-tip="Return per unit of risk taken. Above 1.0 is generally considered good; higher is better.">i</span></div><div class="value">${s.sharpe_ratio.toFixed(2)}</div></div>
           <div class="stat"><div class="label">Buy &amp; Hold Sharpe</div><div class="value">${b.sharpe_ratio.toFixed(2)}</div></div>
           <div class="stat"><div class="label">Max Drawdown<span class="info-icon" data-tip="The worst peak-to-trough decline in portfolio value during the test period. Smaller (closer to 0%) is better.">i</span></div><div class="value down">${fmtPct(s.max_drawdown_pct)}</div></div>
-          <div class="stat"><div class="label">Win Rate<span class="info-icon" data-tip="% of trading days the strategy's position gained value.">i</span></div><div class="value">${fmtPct(s.win_rate_pct)}</div></div>
+          <div class="stat"><div class="label">Win Rate<span class="info-icon" data-tip="% of days actually invested in which the position gained value (days in cash are excluded).">i</span></div><div class="value">${fmtPct(s.win_rate_pct)}</div></div>
+          <div class="stat"><div class="label">Time Invested</div><div class="value">${fmtPct(s.pct_time_invested)}</div></div>
         `;
         note.textContent = `Test period: ${data.test_period.start} to ${data.test_period.end} (${data.test_period.n_days} trading days). Includes transaction costs. Model variant: ${data.model_variant}.`;
       } catch (e) {

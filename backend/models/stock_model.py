@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime
-from datetime import datetime
+from datetime import datetime, timezone
 from backend.database import Base
 
 class Stock(Base):
@@ -10,4 +10,4 @@ class Stock(Base):
     company_name = Column(String(100), nullable=False)
     last_price = Column(Float, nullable=True)
     change_percent = Column(Float, nullable=True)
-    updated_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=lambda: datetime.now(timezone.utc))

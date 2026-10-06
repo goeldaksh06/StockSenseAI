@@ -1,12 +1,14 @@
 # routers/user_router.py
-from fastapi import APIRouter, HTTPException, Depends, Header
-from pydantic import BaseModel
+from fastapi import APIRouter, HTTPException, Depends, Header, Request
+from pydantic import BaseModel, Field
 import bcrypt
 from sqlalchemy.orm import Session
 from backend.database import get_db
 from backend.models.user_model import User
 from backend.models.watchlist_model import Watchlist
 import os
+import time
+from collections import defaultdict, deque
 import jwt
 
 router = APIRouter(prefix="/users", tags=["Users"])
@@ -19,13 +21,33 @@ def hash_password(password: str) -> str:
 def verify_password(password: str, hashed: str) -> bool:
     return bcrypt.checkpw(password.encode("utf-8"), hashed.encode("utf-8"))
 
-JWT_SECRET = os.getenv("JWT_SECRET", "change-me")
+JWT_SECRET = os.getenv("JWT_SECRET")
+if not JWT_SECRET:
+    if os.getenv("ENV") == "production":
+        raise RuntimeError("JWT_SECRET must be set when ENV=production")
+    JWT_SECRET = "dev-only-insecure-secret"
 JWT_ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
 
 
 class UserRegister(BaseModel):
     email: str
-    password: str
+    password: str = Field(min_length=8, max_length=72)  # bcrypt truncates past 72 bytes
+
+
+# Simple in-memory limiter (per process): max 10 login attempts / 60s per client+email.
+_LOGIN_WINDOW_S = 60
+_LOGIN_MAX_ATTEMPTS = 10
+_login_attempts: dict[str, deque] = defaultdict(deque)
+
+
+def _check_login_rate(key: str) -> None:
+    now = time.monotonic()
+    q = _login_attempts[key]
+    while q and now - q[0] > _LOGIN_WINDOW_S:
+        q.popleft()
+    if len(q) >= _LOGIN_MAX_ATTEMPTS:
+        raise HTTPException(status_code=429, detail="Too many login attempts, try again later")
+    q.append(now)
 
 
 class UserLogin(BaseModel):
@@ -73,7 +95,8 @@ def register_user(payload: UserRegister, db: Session = Depends(get_db)):
 
 
 @router.post("/login")
-def login_user(payload: UserLogin, db: Session = Depends(get_db)):
+def login_user(payload: UserLogin, request: Request, db: Session = Depends(get_db)):
+    _check_login_rate(f"{request.client.host if request.client else '?'}:{payload.email.lower()}")
     user = db.query(User).filter(User.email == payload.email).first()
     if not user:
         raise HTTPException(status_code=404, detail="User not found")

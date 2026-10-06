@@ -118,20 +118,24 @@ def _simulate_long_only(
     return np.array(equity_curve)
 
 
-def _summarize(equity_curve: np.ndarray, n_days: int) -> dict:
+def _summarize(equity_curve: np.ndarray, n_days: int, in_market: np.ndarray) -> dict:
     total_return_pct = float((equity_curve[-1] / equity_curve[0] - 1) * 100)
     years = n_days / TRADING_DAYS_PER_YEAR
     annualized_return_pct = (
         float(((equity_curve[-1] / equity_curve[0]) ** (1 / years) - 1) * 100) if years > 0 else 0.0
     )
     daily_returns = np.diff(equity_curve) / equity_curve[:-1]
-    wins = daily_returns > 0
+    # Win rate is measured only over days the strategy actually held the stock;
+    # days spent in cash are flat by construction and shouldn't count as losses.
+    held = np.asarray(in_market[: len(daily_returns)], dtype=bool)
+    wins = daily_returns[held] > 0
     return {
         "total_return_pct": total_return_pct,
         "annualized_return_pct": annualized_return_pct,
         "sharpe_ratio": _sharpe_ratio(daily_returns),
         "max_drawdown_pct": _max_drawdown_pct(equity_curve),
         "win_rate_pct": float(np.mean(wins) * 100) if len(wins) else 0.0,
+        "pct_time_invested": float(held.mean() * 100) if len(held) else 0.0,
     }
 
 
@@ -162,8 +166,8 @@ def run_backtest(
             "end": str(test_df.index[-1].date()),
             "n_days": n_days,
         },
-        "strategy": _summarize(strategy_equity, n_days),
-        "buy_and_hold": _summarize(buy_and_hold_equity, n_days),
+        "strategy": _summarize(strategy_equity, n_days, predicted_up),
+        "buy_and_hold": _summarize(buy_and_hold_equity, n_days, buy_and_hold_signal),
     }
 
 

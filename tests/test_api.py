@@ -18,7 +18,7 @@ def test_register_new_user(client):
 
 def test_register_duplicate_user_rejected(client):
     client.post("/users/register", json={"email": "dup@example.com", "password": "hunter2pass"})
-    resp = client.post("/users/register", json={"email": "dup@example.com", "password": "other"})
+    resp = client.post("/users/register", json={"email": "dup@example.com", "password": "otherpass1"})
     assert resp.status_code == 400
 
 
@@ -146,3 +146,17 @@ def test_briefing_degrades_without_llm_key(client, monkeypatch):
 def test_analysis_backtest_rejects_invalid_variant(client):
     resp = client.get("/analysis/backtest/AAPL", params={"model_variant": "bogus"})
     assert resp.status_code == 400
+
+
+def test_register_short_password_rejected(client):
+    resp = client.post("/users/register", json={"email": "s@example.com", "password": "short"})
+    assert resp.status_code == 422
+
+
+def test_login_rate_limited(client):
+    client.post("/users/register", json={"email": "r@example.com", "password": "correctpass"})
+    codes = [
+        client.post("/users/login", json={"email": "r@example.com", "password": "wrongpass1"}).status_code
+        for _ in range(12)
+    ]
+    assert codes[0] == 401 and codes[-1] == 429

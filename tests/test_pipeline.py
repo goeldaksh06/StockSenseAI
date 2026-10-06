@@ -89,3 +89,15 @@ def test_directional_accuracy_previous_close_baseline_is_zero_when_price_always_
     y_true = np.array([105.0, 95.0, 110.0])  # never flat
     pred_prev_close = prev.copy()
     assert directional_accuracy(y_true, pred_prev_close, prev) == pytest.approx(0.0)
+
+
+def test_backtest_win_rate_ignores_cash_days():
+    import numpy as np
+    from backend.ml.backtest import _simulate_long_only, _summarize
+
+    prices = np.array([100.0, 101.0, 102.0, 101.0, 103.0])
+    in_market = np.array([True, True, False, False, False])
+    eq = _simulate_long_only(prices, in_market, 1000.0, 0.0)
+    s = _summarize(eq, len(prices), in_market)
+    assert s["win_rate_pct"] == 100.0
+    assert s["pct_time_invested"] == 50.0
