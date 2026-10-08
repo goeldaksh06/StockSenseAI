@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Backtest{% endblock %}
+{% block content %}
+<div class="labnav seg" role="navigation" aria-label="Forecast lab" style="margin:22px 0 4px">
+  <a href="/analyze" >Analyze</a><a href="/models" >Models</a><a href="/backtest" aria-current="page">Backtest</a>
+</div>
+<div class="banner" style="margin:12px 0">Experimental. Tested across 45 stocks, the forecast model has not beaten simply assuming "up". See <a href="/evidence">Evidence</a>.</div>
+<div class="eyebrow">Backtest lab</div>
+<h2>Trade the signal, then compare with buy and hold</h2>
+<p class="prose muted">Long-only, daily, with transaction costs, on the held-out test period only. Change the inputs and rerun.</p>
+<div id="bar"></div><div id="out"></div>
+{% endblock %}
+{% block scripts %}
+<script type="module" src="/static/js/pages/backtest.js"></script>
+{% endblock %}

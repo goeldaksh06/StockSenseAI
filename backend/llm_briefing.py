@@ -48,54 +48,46 @@ def is_configured() -> bool:
     return False
 
 
+def complete(messages: list[dict], system: str | None = None, max_tokens: int = 600) -> str:
+    """One chat completion against the configured provider. Raises on any error."""
+    if LLM_PROVIDER == "anthropic":
+        import anthropic
+
+        client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+        kwargs = {"system": system} if system else {}
+        resp = client.messages.create(model=ANTHROPIC_MODEL, max_tokens=max_tokens, messages=messages, **kwargs)
+        return resp.content[0].text.strip()
+
+    from openai import OpenAI
+
+    if LLM_PROVIDER == "groq":
+        client = OpenAI(api_key=os.getenv("GROQ_API_KEY"), base_url=GROQ_BASE_URL)
+        model = GROQ_MODEL
+    else:
+        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        model = OPENAI_MODEL
+    full = ([{"role": "system", "content": system}] if system else []) + messages
+    resp = client.chat.completions.create(model=model, max_tokens=max_tokens, messages=full)
+    return (resp.choices[0].message.content or "").strip()
+
+
 def generate_briefing(symbol: str, indicators: dict, sentiment: dict, prediction: dict) -> dict:
     """Returns {'available': bool, 'text': str, 'provider': str}.
 
-    Never raises — a missing key or an API error degrades to a clearly
+    Never raises: a missing key or an API error degrades to a clearly
     labeled unavailable state instead of breaking the rest of the response.
     """
     if not is_configured():
         return {
             "available": False,
-            "text": "LLM briefing not configured — set ANTHROPIC_API_KEY, OPENAI_API_KEY, or GROQ_API_KEY with a matching LLM_PROVIDER to enable this feature.",
+            "text": "LLM briefing not configured: set ANTHROPIC_API_KEY, OPENAI_API_KEY, or GROQ_API_KEY with a matching LLM_PROVIDER to enable this feature.",
             "provider": LLM_PROVIDER,
         }
 
     prompt = _build_prompt(symbol, indicators, sentiment, prediction)
-
     try:
-        if LLM_PROVIDER == "anthropic":
-            import anthropic
-
-            client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
-            resp = client.messages.create(
-                model=ANTHROPIC_MODEL,
-                max_tokens=300,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            text = resp.content[0].text
-        elif LLM_PROVIDER == "groq":
-            from openai import OpenAI
-
-            client = OpenAI(api_key=os.getenv("GROQ_API_KEY"), base_url=GROQ_BASE_URL)
-            resp = client.chat.completions.create(
-                model=GROQ_MODEL,
-                max_tokens=300,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            text = resp.choices[0].message.content
-        else:
-            from openai import OpenAI
-
-            client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-            resp = client.chat.completions.create(
-                model=OPENAI_MODEL,
-                max_tokens=300,
-                messages=[{"role": "user", "content": prompt}],
-            )
-            text = resp.choices[0].message.content
-
-        return {"available": True, "text": text.strip(), "provider": LLM_PROVIDER}
+        text = complete([{"role": "user", "content": prompt}])
+        return {"available": True, "text": text, "provider": LLM_PROVIDER}
     except Exception as e:
         return {
             "available": False,

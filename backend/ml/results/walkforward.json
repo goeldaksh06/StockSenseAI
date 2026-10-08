@@ -1,0 +1,4315 @@
+{
+ "generated_at": "2026-10-08T17:29:48.703137+00:00",
+ "method": {
+  "initial_train_days": 750,
+  "retrain_every_days": 63,
+  "cost_per_switch": 0.001,
+  "thresholds": [
+   0.5,
+   0.55
+  ],
+  "window": "expanding",
+  "model": "XGBClassifier (same params as live app)",
+  "feature_sets": {
+   "price": 21,
+   "price+market": 26
+  }
+ },
+ "failed": [],
+ "aggregate": {
+  "price": {
+   "n_tickers": 45,
+   "mean_accuracy": 0.4961460641553235,
+   "mean_always_up_accuracy": 0.515828760859625,
+   "mean_edge_vs_always_up": -0.01968269670430165,
+   "edge_ci95": [
+    -0.026761697179135454,
+    -0.01300787102986178
+   ],
+   "tickers_beating_always_up": 8,
+   "mean_auc": 0.4981375255780302,
+   "auc_above_0.5_tickers": 18,
+   "mean_brier_skill": -0.2696145530111524,
+   "brier_skill_ci95": [
+    -0.28209259763250905,
+    -0.25736964236464954
+   ],
+   "sim": {
+    "0.5": {
+     "mean_strategy_sharpe": 0.12771294014036866,
+     "mean_buyhold_sharpe": 0.4924052875194483,
+     "mean_sharpe_diff": -0.36469234737907963,
+     "sharpe_diff_ci95": [
+      -0.4527061327005945,
+      -0.270464109350501
+     ],
+     "mean_return_diff_pct": -94.98019842070931,
+     "tickers_strategy_beats_buyhold_return": 4,
+     "mean_pct_invested": 48.25598378530477,
+     "mean_drawdown_strategy": -38.320819005189584,
+     "mean_drawdown_buyhold": -43.05492876812222
+    },
+    "0.55": {
+     "mean_strategy_sharpe": 0.07976274900957266,
+     "mean_buyhold_sharpe": 0.4924052875194483,
+     "mean_sharpe_diff": -0.41264253850987564,
+     "sharpe_diff_ci95": [
+      -0.5029074458730362,
+      -0.314602785924486
+     ],
+     "mean_return_diff_pct": -101.37591887915976,
+     "tickers_strategy_beats_buyhold_return": 1,
+     "mean_pct_invested": 42.124173437445044,
+     "mean_drawdown_strategy": -37.824067185060365,
+     "mean_drawdown_buyhold": -43.05492876812222
+    }
+   }
+  },
+  "price+market": {
+   "n_tickers": 45,
+   "mean_accuracy": 0.49714321515247434,
+   "mean_always_up_accuracy": 0.515828760859625,
+   "mean_edge_vs_always_up": -0.018685545707150652,
+   "edge_ci95": [
+    -0.026318491479371108,
+    -0.011316067848475274
+   ],
+   "tickers_beating_always_up": 10,
+   "mean_auc": 0.49927447322277163,
+   "auc_above_0.5_tickers": 25,
+   "mean_brier_skill": -0.23615516823067487,
+   "brier_skill_ci95": [
+    -0.24737209723224482,
+    -0.22497306416877286
+   ],
+   "sim": {
+    "0.5": {
+     "mean_strategy_sharpe": 0.08612921798304576,
+     "mean_buyhold_sharpe": 0.4924052875194483,
+     "mean_sharpe_diff": -0.40627606953640244,
+     "sharpe_diff_ci95": [
+      -0.5145851637743493,
+      -0.2945885564227948
+     ],
+     "mean_return_diff_pct": -101.32304496986859,
+     "tickers_strategy_beats_buyhold_return": 6,
+     "mean_pct_invested": 48.74519450599696,
+     "mean_drawdown_strategy": -39.345081788811875,
+     "mean_drawdown_buyhold": -43.05492876812222
+    },
+    "0.55": {
+     "mean_strategy_sharpe": 0.08739886776283276,
+     "mean_buyhold_sharpe": 0.4924052875194483,
+     "mean_sharpe_diff": -0.4050064197566157,
+     "sharpe_diff_ci95": [
+      -0.5296268059068042,
+      -0.2774847290432771
+     ],
+     "mean_return_diff_pct": -99.83385409667049,
+     "tickers_strategy_beats_buyhold_return": 7,
+     "mean_pct_invested": 42.06880253948156,
+     "mean_drawdown_strategy": -37.81904524779291,
+     "mean_drawdown_buyhold": -43.05492876812222
+    }
+   }
+  }
+ },
+ "calibration": {
+  "price": [
+   {
+    "lo": -0.001,
+    "hi": 0.1,
+    "n": 3554,
+    "mean_pred": 0.0652410005338251,
+    "actual_up": 0.5140686550365785
+   },
+   {
+    "lo": 0.1,
+    "hi": 0.2,
+    "n": 5926,
+    "mean_pred": 0.15159347302610715,
+    "actual_up": 0.5200809989875127
+   },
+   {
+    "lo": 0.2,
+    "hi": 0.3,
+    "n": 6255,
+    "mean_pred": 0.25014695040613627,
+    "actual_up": 0.5133493205435652
+   },
+   {
+    "lo": 0.3,
+    "hi": 0.4,
+    "n": 6455,
+    "mean_pred": 0.3497665143770178,
+    "actual_up": 0.5245546088303641
+   },
+   {
+    "lo": 0.4,
+    "hi": 0.5,
+    "n": 6791,
+    "mean_pred": 0.45013028984041037,
+    "actual_up": 0.5208364011191282
+   },
+   {
+    "lo": 0.5,
+    "hi": 0.6,
+    "n": 6874,
+    "mean_pred": 0.5499625054250666,
+    "actual_up": 0.5203665987780041
+   },
+   {
+    "lo": 0.6,
+    "hi": 0.7,
+    "n": 6666,
+    "mean_pred": 0.6496683401529258,
+    "actual_up": 0.5193519351935193
+   },
+   {
+    "lo": 0.7,
+    "hi": 0.8,
+    "n": 5987,
+    "mean_pred": 0.7488354016807853,
+    "actual_up": 0.5029229998329714
+   },
+   {
+    "lo": 0.8,
+    "hi": 0.9,
+    "n": 4974,
+    "mean_pred": 0.8475306626779274,
+    "actual_up": 0.5074386811419381
+   },
+   {
+    "lo": 0.9,
+    "hi": 1.0,
+    "n": 2513,
+    "mean_pred": 0.9363286518452891,
+    "actual_up": 0.5053720652606446
+   }
+  ],
+  "price+market": [
+   {
+    "lo": -0.001,
+    "hi": 0.1,
+    "n": 2396,
+    "mean_pred": 0.06644159072573967,
+    "actual_up": 0.510016694490818
+   },
+   {
+    "lo": 0.1,
+    "hi": 0.2,
+    "n": 5374,
+    "mean_pred": 0.15244315742647777,
+    "actual_up": 0.5158168961667287
+   },
+   {
+    "lo": 0.2,
+    "hi": 0.3,
+    "n": 6522,
+    "mean_pred": 0.2510893348877469,
+    "actual_up": 0.5266789328426863
+   },
+   {
+    "lo": 0.3,
+    "hi": 0.4,
+    "n": 7011,
+    "mean_pred": 0.35039360383627777,
+    "actual_up": 0.5201825702467551
+   },
+   {
+    "lo": 0.4,
+    "hi": 0.5,
+    "n": 7400,
+    "mean_pred": 0.44904153836337296,
+    "actual_up": 0.5135135135135135
+   },
+   {
+    "lo": 0.5,
+    "hi": 0.6,
+    "n": 7465,
+    "mean_pred": 0.5505121249204024,
+    "actual_up": 0.5087742799732083
+   },
+   {
+    "lo": 0.6,
+    "hi": 0.7,
+    "n": 7044,
+    "mean_pred": 0.6499439358863555,
+    "actual_up": 0.518313458262351
+   },
+   {
+    "lo": 0.7,
+    "hi": 0.8,
+    "n": 6299,
+    "mean_pred": 0.7486432692629512,
+    "actual_up": 0.5051595491347833
+   },
+   {
+    "lo": 0.8,
+    "hi": 0.9,
+    "n": 4623,
+    "mean_pred": 0.8466311233424789,
+    "actual_up": 0.5223880597014925
+   },
+   {
+    "lo": 0.9,
+    "hi": 1.0,
+    "n": 1861,
+    "mean_pred": 0.9337033879878635,
+    "actual_up": 0.5185384202041913
+   }
+  ]
+ },
+ "tickers": [
+  {
+   "symbol": "AAPL",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.484775641025641,
+    "always_up_accuracy": 0.532051282051282,
+    "edge_vs_always_up": -0.047275641025641024,
+    "auc": 0.48544262667106775,
+    "brier": 0.33563540485967613,
+    "brier_baserate": 0.24897271531886916,
+    "brier_skill": -0.34808107157370505,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -16.91595965166823,
+       "annualized_pct": -3.672841878550026,
+       "sharpe": -0.0658438406766974,
+       "max_drawdown_pct": -40.20949548993497
+      },
+      "buy_hold": {
+       "total_return_pct": 138.0765619112259,
+       "annualized_pct": 19.142794841430224,
+       "sharpe": 0.7640751101285138,
+       "max_drawdown_pct": -33.36051768628558
+      },
+      "pct_invested": 44.79166666666667
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -23.575161766944298,
+       "annualized_pct": -5.284216392475516,
+       "sharpe": -0.15444293045681945,
+       "max_drawdown_pct": -37.43265697148744
+      },
+      "buy_hold": {
+       "total_return_pct": 138.0765619112259,
+       "annualized_pct": 19.142794841430224,
+       "sharpe": 0.7640751101285138,
+       "max_drawdown_pct": -33.36051768628558
+      },
+      "pct_invested": 39.82371794871795
+     }
+    },
+    "p_mean": 0.4670305872747961
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.4703525641025641,
+    "always_up_accuracy": 0.532051282051282,
+    "edge_vs_always_up": -0.06169871794871795,
+    "auc": 0.47395661412774387,
+    "brier": 0.3286643590494586,
+    "brier_baserate": 0.24897271531886916,
+    "brier_skill": -0.32008183558798886,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -28.48492479048842,
+       "annualized_pct": -6.5456512640312265,
+       "sharpe": -0.20632024178181388,
+       "max_drawdown_pct": -44.35053131961995
+      },
+      "buy_hold": {
+       "total_return_pct": 138.0765619112259,
+       "annualized_pct": 19.142794841430224,
+       "sharpe": 0.7640751101285138,
+       "max_drawdown_pct": -33.36051768628558
+      },
+      "pct_invested": 44.79166666666667
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -20.0872348823816,
+       "annualized_pct": -4.426837928318717,
+       "sharpe": -0.12005339221388449,
+       "max_drawdown_pct": -42.18301095484254
+      },
+      "buy_hold": {
+       "total_return_pct": 138.0765619112259,
+       "annualized_pct": 19.142794841430224,
+       "sharpe": 0.7640751101285138,
+       "max_drawdown_pct": -33.36051768628558
+      },
+      "pct_invested": 38.94230769230769
+     }
+    },
+    "p_mean": 0.4706022091514359
+   }
+  },
+  {
+   "symbol": "MSFT",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.500801282051282,
+    "always_up_accuracy": 0.5192307692307693,
+    "edge_vs_always_up": -0.018429487179487225,
+    "auc": 0.49952932098765435,
+    "brier": 0.31649004601842845,
+    "brier_baserate": 0.2496301775147929,
+    "brier_skill": -0.2678356806427118,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 19.744579694153018,
+       "annualized_pct": 3.7054701789949407,
+       "sharpe": 0.27418150685962206,
+       "max_drawdown_pct": -28.096281579947785
+      },
+      "buy_hold": {
+       "total_return_pct": 81.27074413441997,
+       "annualized_pct": 12.761885099133629,
+       "sharpe": 0.5662341920337248,
+       "max_drawdown_pct": -37.148483424716446
+      },
+      "pct_invested": 54.88782051282052
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 18.09881689054027,
+       "annualized_pct": 3.416073180808832,
+       "sharpe": 0.2629997117629115,
+       "max_drawdown_pct": -28.856421667423376
+      },
+      "buy_hold": {
+       "total_return_pct": 81.27074413441997,
+       "annualized_pct": 12.761885099133629,
+       "sharpe": 0.5662341920337248,
+       "max_drawdown_pct": -37.148483424716446
+      },
+      "pct_invested": 48.717948717948715
+     }
+    },
+    "p_mean": 0.5229261946992781
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5056089743589743,
+    "always_up_accuracy": 0.5192307692307693,
+    "edge_vs_always_up": -0.013621794871794934,
+    "auc": 0.5043775720164609,
+    "brier": 0.3086219275792755,
+    "brier_baserate": 0.2496301775147929,
+    "brier_skill": -0.23631658099905306,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 9.554644843232673,
+       "annualized_pct": 1.8596951636617343,
+       "sharpe": 0.1928476475043937,
+       "max_drawdown_pct": -26.9642510442069
+      },
+      "buy_hold": {
+       "total_return_pct": 81.27074413441997,
+       "annualized_pct": 12.761885099133629,
+       "sharpe": 0.5662341920337248,
+       "max_drawdown_pct": -37.148483424716446
+      },
+      "pct_invested": 53.125
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -23.421622283946274,
+       "annualized_pct": -5.24582392963503,
+       "sharpe": -0.15269717634986343,
+       "max_drawdown_pct": -41.13789680426514
+      },
+      "buy_hold": {
+       "total_return_pct": 81.27074413441997,
+       "annualized_pct": 12.761885099133629,
+       "sharpe": 0.5662341920337248,
+       "max_drawdown_pct": -37.148483424716446
+      },
+      "pct_invested": 46.794871794871796
+     }
+    },
+    "p_mean": 0.5186804608749345
+   }
+  },
+  {
+   "symbol": "GOOGL",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.47836538461538464,
+    "always_up_accuracy": 0.5232371794871795,
+    "edge_vs_always_up": -0.04487179487179488,
+    "auc": 0.4855457037332544,
+    "brier": 0.3139785762987722,
+    "brier_baserate": 0.24946003348948062,
+    "brier_skill": -0.25863278340340723,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -21.2578649407939,
+       "annualized_pct": -4.711204845466721,
+       "sharpe": -0.08461427544107705,
+       "max_drawdown_pct": -41.07908278471067
+      },
+      "buy_hold": {
+       "total_return_pct": 150.04589518291564,
+       "annualized_pct": 20.32873982157448,
+       "sharpe": 0.7358236239947186,
+       "max_drawdown_pct": -44.32005682179171
+      },
+      "pct_invested": 51.442307692307686
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -32.83642708648986,
+       "annualized_pct": -7.72281802811311,
+       "sharpe": -0.24137293714663188,
+       "max_drawdown_pct": -49.426582957153265
+      },
+      "buy_hold": {
+       "total_return_pct": 150.04589518291564,
+       "annualized_pct": 20.32873982157448,
+       "sharpe": 0.7358236239947186,
+       "max_drawdown_pct": -44.32005682179171
+      },
+      "pct_invested": 45.592948717948715
+     }
+    },
+    "p_mean": 0.5016009535443468
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5048076923076923,
+    "always_up_accuracy": 0.5232371794871795,
+    "edge_vs_always_up": -0.018429487179487225,
+    "auc": 0.4952089258367972,
+    "brier": 0.30648472975646307,
+    "brier_baserate": 0.24946003348948062,
+    "brier_skill": -0.2285925142769898,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 7.41595051553936,
+       "annualized_pct": 1.455011122258143,
+       "sharpe": 0.1798747144796311,
+       "max_drawdown_pct": -46.74545342895698
+      },
+      "buy_hold": {
+       "total_return_pct": 150.04589518291564,
+       "annualized_pct": 20.32873982157448,
+       "sharpe": 0.7358236239947186,
+       "max_drawdown_pct": -44.32005682179171
+      },
+      "pct_invested": 51.682692307692314
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -19.105822456232946,
+       "annualized_pct": -4.19098603142769,
+       "sharpe": -0.07824697716903345,
+       "max_drawdown_pct": -51.64917679610682
+      },
+      "buy_hold": {
+       "total_return_pct": 150.04589518291564,
+       "annualized_pct": 20.32873982157448,
+       "sharpe": 0.7358236239947186,
+       "max_drawdown_pct": -44.32005682179171
+      },
+      "pct_invested": 44.15064102564102
+     }
+    },
+    "p_mean": 0.5087061891696439
+   }
+  },
+  {
+   "symbol": "AMZN",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5032051282051282,
+    "always_up_accuracy": 0.5088141025641025,
+    "edge_vs_always_up": -0.005608974358974339,
+    "auc": 0.5081322012562459,
+    "brier": 0.31634074685307767,
+    "brier_baserate": 0.24992231159598946,
+    "brier_skill": -0.26575632576757124,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 10.262946215478209,
+       "annualized_pct": 1.9923301407789529,
+       "sharpe": 0.2046116322746287,
+       "max_drawdown_pct": -38.57888949905188
+      },
+      "buy_hold": {
+       "total_return_pct": 52.33875527857781,
+       "annualized_pct": 8.871357729358387,
+       "sharpe": 0.41462185479166175,
+       "max_drawdown_pct": -55.725825635324675
+      },
+      "pct_invested": 36.93910256410257
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 9.53605670451909,
+       "annualized_pct": 1.8562051844276617,
+       "sharpe": 0.19714768135229416,
+       "max_drawdown_pct": -35.531201705653906
+      },
+      "buy_hold": {
+       "total_return_pct": 52.33875527857781,
+       "annualized_pct": 8.871357729358387,
+       "sharpe": 0.41462185479166175,
+       "max_drawdown_pct": -55.725825635324675
+      },
+      "pct_invested": 31.570512820512818
+     }
+    },
+    "p_mean": 0.4214347375583692
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.4951923076923077,
+    "always_up_accuracy": 0.5088141025641025,
+    "edge_vs_always_up": -0.013621794871794823,
+    "auc": 0.504050044315423,
+    "brier": 0.3065503547442179,
+    "brier_baserate": 0.24992231159598946,
+    "brier_skill": -0.22658258395020847,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 23.477560162661803,
+       "annualized_pct": 4.3503088368126885,
+       "sharpe": 0.29171711863393496,
+       "max_drawdown_pct": -30.53418134824526
+      },
+      "buy_hold": {
+       "total_return_pct": 52.33875527857781,
+       "annualized_pct": 8.871357729358387,
+       "sharpe": 0.41462185479166175,
+       "max_drawdown_pct": -55.725825635324675
+      },
+      "pct_invested": 41.58653846153847
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 40.87742282444877,
+       "annualized_pct": 7.165381188413122,
+       "sharpe": 0.40273816043186594,
+       "max_drawdown_pct": -31.700216652096348
+      },
+      "buy_hold": {
+       "total_return_pct": 52.33875527857781,
+       "annualized_pct": 8.871357729358387,
+       "sharpe": 0.41462185479166175,
+       "max_drawdown_pct": -55.725825635324675
+      },
+      "pct_invested": 35.016025641025635
+     }
+    },
+    "p_mean": 0.44953337035780677
+   }
+  },
+  {
+   "symbol": "META",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.49759615384615385,
+    "always_up_accuracy": 0.5176282051282052,
+    "edge_vs_always_up": -0.020032051282051322,
+    "auc": 0.5099667774086378,
+    "brier": 0.30797163712085013,
+    "brier_baserate": 0.24968924638395792,
+    "brier_skill": -0.23341970701961623,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 144.48796255144015,
+       "annualized_pct": 19.783816224536643,
+       "sharpe": 0.7444123464672244,
+       "max_drawdown_pct": -32.231337777853106
+      },
+      "buy_hold": {
+       "total_return_pct": 124.01561918958865,
+       "annualized_pct": 17.687211333891394,
+       "sharpe": 0.5881235690041887,
+       "max_drawdown_pct": -74.41880462045162
+      },
+      "pct_invested": 45.592948717948715
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 26.18580094962479,
+       "annualized_pct": 4.808462157742577,
+       "sharpe": 0.3049576754318768,
+       "max_drawdown_pct": -34.51576427278197
+      },
+      "buy_hold": {
+       "total_return_pct": 124.01561918958865,
+       "annualized_pct": 17.687211333891394,
+       "sharpe": 0.5881235690041887,
+       "max_drawdown_pct": -74.41880462045162
+      },
+      "pct_invested": 38.54166666666667
+     }
+    },
+    "p_mean": 0.47395964295794374
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5080128205128205,
+    "always_up_accuracy": 0.5176282051282052,
+    "edge_vs_always_up": -0.009615384615384692,
+    "auc": 0.5107561996646884,
+    "brier": 0.3012424892920128,
+    "brier_baserate": 0.24968924638395792,
+    "brier_skill": -0.2064696163517561,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 122.39280755236406,
+       "annualized_pct": 17.51456231598807,
+       "sharpe": 0.6823758683896191,
+       "max_drawdown_pct": -30.332631620575125
+      },
+      "buy_hold": {
+       "total_return_pct": 124.01561918958865,
+       "annualized_pct": 17.687211333891394,
+       "sharpe": 0.5881235690041887,
+       "max_drawdown_pct": -74.41880462045162
+      },
+      "pct_invested": 48.23717948717949
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 167.6784666226772,
+       "annualized_pct": 21.995839718528543,
+       "sharpe": 0.8522947889937209,
+       "max_drawdown_pct": -22.704992541426144
+      },
+      "buy_hold": {
+       "total_return_pct": 124.01561918958865,
+       "annualized_pct": 17.687211333891394,
+       "sharpe": 0.5881235690041887,
+       "max_drawdown_pct": -74.41880462045162
+      },
+      "pct_invested": 40.705128205128204
+     }
+    },
+    "p_mean": 0.48624035473077154
+   }
+  },
+  {
+   "symbol": "NVDA",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.48157051282051283,
+    "always_up_accuracy": 0.5336538461538461,
+    "edge_vs_always_up": -0.052083333333333315,
+    "auc": 0.4911715839550891,
+    "brier": 0.3192423733443602,
+    "brier_baserate": 0.24886741863905323,
+    "brier_skill": -0.2827809083654129,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -12.260583226719323,
+       "annualized_pct": -2.6065595304356703,
+       "sharpe": 0.12329841316238097,
+       "max_drawdown_pct": -64.99859705623851
+      },
+      "buy_hold": {
+       "total_return_pct": 989.9337374401464,
+       "annualized_pct": 61.98508172623962,
+       "sharpe": 1.1860413870536959,
+       "max_drawdown_pct": -66.3350810193197
+      },
+      "pct_invested": 47.355769230769226
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 13.697445364774264,
+       "annualized_pct": 2.6259887244884927,
+       "sharpe": 0.2561087587548482,
+       "max_drawdown_pct": -61.8658746314912
+      },
+      "buy_hold": {
+       "total_return_pct": 989.9337374401464,
+       "annualized_pct": 61.98508172623962,
+       "sharpe": 1.1860413870536959,
+       "max_drawdown_pct": -66.3350810193197
+      },
+      "pct_invested": 41.746794871794876
+     }
+    },
+    "p_mean": 0.4983426922162135
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.483974358974359,
+    "always_up_accuracy": 0.5336538461538461,
+    "edge_vs_always_up": -0.04967948717948717,
+    "auc": 0.4953303819283201,
+    "brier": 0.3136578350393974,
+    "brier_baserate": 0.24886741863905323,
+    "brier_skill": -0.26034109549034,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 49.19457340391495,
+       "annualized_pct": 8.413844619542443,
+       "sharpe": 0.3995503822507574,
+       "max_drawdown_pct": -63.887942558148104
+      },
+      "buy_hold": {
+       "total_return_pct": 989.9337374401464,
+       "annualized_pct": 61.98508172623962,
+       "sharpe": 1.1860413870536959,
+       "max_drawdown_pct": -66.3350810193197
+      },
+      "pct_invested": 48.07692307692308
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 45.92293322739722,
+       "annualized_pct": 7.929541568732246,
+       "sharpe": 0.38869302712083303,
+       "max_drawdown_pct": -55.259382560680635
+      },
+      "buy_hold": {
+       "total_return_pct": 989.9337374401464,
+       "annualized_pct": 61.98508172623962,
+       "sharpe": 1.1860413870536959,
+       "max_drawdown_pct": -66.3350810193197
+      },
+      "pct_invested": 41.907051282051285
+     }
+    },
+    "p_mean": 0.4919762618269604
+   }
+  },
+  {
+   "symbol": "TSLA",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5112179487179487,
+    "always_up_accuracy": 0.5112179487179487,
+    "edge_vs_always_up": 0.0,
+    "auc": 0.5190194768487589,
+    "brier": 0.30471771717442026,
+    "brier_baserate": 0.24987415762656148,
+    "brier_skill": -0.21948472010388054,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -28.049162770418,
+       "annualized_pct": -6.430945869774185,
+       "sharpe": 0.022442444347417198,
+       "max_drawdown_pct": -62.79737242093964
+      },
+      "buy_hold": {
+       "total_return_pct": 34.3169043248478,
+       "annualized_pct": 6.13840083198367,
+       "sharpe": 0.39832217778174095,
+       "max_drawdown_pct": -73.63221744219119
+      },
+      "pct_invested": 39.1025641025641
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -6.1489480274213415,
+       "annualized_pct": -1.2732530227080874,
+       "sharpe": 0.14273736676820348,
+       "max_drawdown_pct": -61.044818691174164
+      },
+      "buy_hold": {
+       "total_return_pct": 34.3169043248478,
+       "annualized_pct": 6.13840083198367,
+       "sharpe": 0.39832217778174095,
+       "max_drawdown_pct": -73.63221744219119
+      },
+      "pct_invested": 33.17307692307692
+     }
+    },
+    "p_mean": 0.43386143644173175
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5024038461538461,
+    "always_up_accuracy": 0.5112179487179487,
+    "edge_vs_always_up": -0.008814102564102533,
+    "auc": 0.5193560820186032,
+    "brier": 0.29649442510485624,
+    "brier_baserate": 0.24987415762656148,
+    "brier_skill": -0.1865749860694641,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -31.664808390391606,
+       "annualized_pct": -7.400020231916226,
+       "sharpe": 0.004970066629092593,
+       "max_drawdown_pct": -67.54911084500553
+      },
+      "buy_hold": {
+       "total_return_pct": 34.3169043248478,
+       "annualized_pct": 6.13840083198367,
+       "sharpe": 0.39832217778174095,
+       "max_drawdown_pct": -73.63221744219119
+      },
+      "pct_invested": 38.86217948717949
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -25.927847478179565,
+       "annualized_pct": -5.880344358366352,
+       "sharpe": 0.017782329090056555,
+       "max_drawdown_pct": -68.40063750039995
+      },
+      "buy_hold": {
+       "total_return_pct": 34.3169043248478,
+       "annualized_pct": 6.13840083198367,
+       "sharpe": 0.39832217778174095,
+       "max_drawdown_pct": -73.63221744219119
+      },
+      "pct_invested": 33.41346153846153
+     }
+    },
+    "p_mean": 0.4477321340684564
+   }
+  },
+  {
+   "symbol": "JPM",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.4655448717948718,
+    "always_up_accuracy": 0.5384615384615384,
+    "edge_vs_always_up": -0.07291666666666663,
+    "auc": 0.4612475198412698,
+    "brier": 0.32495568461881763,
+    "brier_baserate": 0.24852071005917162,
+    "brier_skill": -0.3075597785852422,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -18.525897981909434,
+       "annualized_pct": -4.052690652227908,
+       "sharpe": -0.14068949778856032,
+       "max_drawdown_pct": -45.75193613017734
+      },
+      "buy_hold": {
+       "total_return_pct": 123.72194680266189,
+       "annualized_pct": 17.656042012499217,
+       "sharpe": 0.7903558857880005,
+       "max_drawdown_pct": -38.77158410531746
+      },
+      "pct_invested": 49.59935897435898
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -32.78740702209494,
+       "annualized_pct": -7.709222567794116,
+       "sharpe": -0.37723659941718674,
+       "max_drawdown_pct": -50.07353454918556
+      },
+      "buy_hold": {
+       "total_return_pct": 123.72194680266189,
+       "annualized_pct": 17.656042012499217,
+       "sharpe": 0.7903558857880005,
+       "max_drawdown_pct": -38.77158410531746
+      },
+      "pct_invested": 44.07051282051282
+     }
+    },
+    "p_mean": 0.5095118081603104
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.4895833333333333,
+    "always_up_accuracy": 0.5384615384615384,
+    "edge_vs_always_up": -0.04887820512820512,
+    "auc": 0.4873615244708995,
+    "brier": 0.30940286274729034,
+    "brier_baserate": 0.24852071005917162,
+    "brier_skill": -0.24497818581647768,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -4.8067907882490495,
+       "annualized_pct": -0.9897741242782421,
+       "sharpe": 0.027460510341733354,
+       "max_drawdown_pct": -33.09832302942476
+      },
+      "buy_hold": {
+       "total_return_pct": 123.72194680266189,
+       "annualized_pct": 17.656042012499217,
+       "sharpe": 0.7903558857880005,
+       "max_drawdown_pct": -38.77158410531746
+      },
+      "pct_invested": 49.59935897435898
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -0.47826313700264356,
+       "annualized_pct": -0.09675719818753592,
+       "sharpe": 0.0732408051840582,
+       "max_drawdown_pct": -27.129860069881808
+      },
+      "buy_hold": {
+       "total_return_pct": 123.72194680266189,
+       "annualized_pct": 17.656042012499217,
+       "sharpe": 0.7903558857880005,
+       "max_drawdown_pct": -38.77158410531746
+      },
+      "pct_invested": 43.18910256410257
+     }
+    },
+    "p_mean": 0.5025219197074572
+   }
+  },
+  {
+   "symbol": "BAC",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5072115384615384,
+    "always_up_accuracy": 0.5080128205128205,
+    "edge_vs_always_up": -0.0008012820512820484,
+    "auc": 0.491093722705741,
+    "brier": 0.3098934296787999,
+    "brier_baserate": 0.24993579470742938,
+    "brier_skill": -0.23989214926799862,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -3.616116672063807,
+       "annualized_pct": -0.7409479403257757,
+       "sharpe": 0.06413570038023018,
+       "max_drawdown_pct": -39.91457406969923
+      },
+      "buy_hold": {
+       "total_return_pct": 30.31899276273169,
+       "annualized_pct": 5.49277377670736,
+       "sharpe": 0.33440722134775885,
+       "max_drawdown_pct": -46.642931976843656
+      },
+      "pct_invested": 49.59935897435898
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -11.719379481414439,
+       "annualized_pct": -2.4855511714738543,
+       "sharpe": -0.03721085189240344,
+       "max_drawdown_pct": -38.60775909816166
+      },
+      "buy_hold": {
+       "total_return_pct": 30.31899276273169,
+       "annualized_pct": 5.49277377670736,
+       "sharpe": 0.33440722134775885,
+       "max_drawdown_pct": -46.642931976843656
+      },
+      "pct_invested": 42.868589743589745
+     }
+    },
+    "p_mean": 0.4883307474896682
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.48717948717948717,
+    "always_up_accuracy": 0.5080128205128205,
+    "edge_vs_always_up": -0.020833333333333315,
+    "auc": 0.47796678962997974,
+    "brier": 0.31468833065068236,
+    "brier_baserate": 0.24993579470742938,
+    "brier_skill": -0.2590766801492008,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -29.1843739613731,
+       "annualized_pct": -6.730938562819089,
+       "sharpe": -0.2528681055486986,
+       "max_drawdown_pct": -45.54794017595493
+      },
+      "buy_hold": {
+       "total_return_pct": 30.31899276273169,
+       "annualized_pct": 5.49277377670736,
+       "sharpe": 0.33440722134775885,
+       "max_drawdown_pct": -46.642931976843656
+      },
+      "pct_invested": 45.51282051282051
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -16.112514154305412,
+       "annualized_pct": -3.4854701344099404,
+       "sharpe": -0.09520528822449442,
+       "max_drawdown_pct": -40.968755816348654
+      },
+      "buy_hold": {
+       "total_return_pct": 30.31899276273169,
+       "annualized_pct": 5.49277377670736,
+       "sharpe": 0.33440722134775885,
+       "max_drawdown_pct": -46.642931976843656
+      },
+      "pct_invested": 39.26282051282051
+     }
+    },
+    "p_mean": 0.47376237891745776
+   }
+  },
+  {
+   "symbol": "V",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5032051282051282,
+    "always_up_accuracy": 0.5336538461538461,
+    "edge_vs_always_up": -0.03044871794871795,
+    "auc": 0.5065116663054807,
+    "brier": 0.3109551558910715,
+    "brier_baserate": 0.2488674186390532,
+    "brier_skill": -0.24948117994532537,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 37.321662195881004,
+       "annualized_pct": 6.613620815064292,
+       "sharpe": 0.4296345089884976,
+       "max_drawdown_pct": -18.632382882843
+      },
+      "buy_hold": {
+       "total_return_pct": 67.14138739273866,
+       "annualized_pct": 10.92918143209156,
+       "sharpe": 0.5679680688193267,
+       "max_drawdown_pct": -24.137875189451876
+      },
+      "pct_invested": 50.480769230769226
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 22.05060044064602,
+       "annualized_pct": 4.105675624650962,
+       "sharpe": 0.3112292011305389,
+       "max_drawdown_pct": -19.15966288125926
+      },
+      "buy_hold": {
+       "total_return_pct": 67.14138739273866,
+       "annualized_pct": 10.92918143209156,
+       "sharpe": 0.5679680688193267,
+       "max_drawdown_pct": -24.137875189451876
+      },
+      "pct_invested": 44.79166666666667
+     }
+    },
+    "p_mean": 0.5053766782362706
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5200320512820513,
+    "always_up_accuracy": 0.5336538461538461,
+    "edge_vs_always_up": -0.013621794871794823,
+    "auc": 0.5168880220426612,
+    "brier": 0.2971642698555459,
+    "brier_baserate": 0.2488674186390532,
+    "brier_skill": -0.19406658967496426,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 71.196562493432,
+       "annualized_pct": 11.467442530379724,
+       "sharpe": 0.6826770100843346,
+       "max_drawdown_pct": -16.489471969107644
+      },
+      "buy_hold": {
+       "total_return_pct": 67.14138739273866,
+       "annualized_pct": 10.92918143209156,
+       "sharpe": 0.5679680688193267,
+       "max_drawdown_pct": -24.137875189451876
+      },
+      "pct_invested": 52.96474358974359
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 66.43065540968716,
+       "annualized_pct": 10.833771893156419,
+       "sharpe": 0.6670792660017993,
+       "max_drawdown_pct": -16.711872730701714
+      },
+      "buy_hold": {
+       "total_return_pct": 67.14138739273866,
+       "annualized_pct": 10.92918143209156,
+       "sharpe": 0.5679680688193267,
+       "max_drawdown_pct": -24.137875189451876
+      },
+      "pct_invested": 47.03525641025641
+     }
+    },
+    "p_mean": 0.5275507089025222
+   }
+  },
+  {
+   "symbol": "MA",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5248397435897436,
+    "always_up_accuracy": 0.5288461538461539,
+    "edge_vs_always_up": -0.004006410256410242,
+    "auc": 0.527596114203257,
+    "brier": 0.3031031885852957,
+    "brier_baserate": 0.24916789940828402,
+    "brier_skill": -0.21646162810336134,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 82.56618593576377,
+       "annualized_pct": 12.924142126671857,
+       "sharpe": 0.7160730665153505,
+       "max_drawdown_pct": -21.903751770710358
+      },
+      "buy_hold": {
+       "total_return_pct": 64.56439985734413,
+       "annualized_pct": 10.581686364501763,
+       "sharpe": 0.5421270760765521,
+       "max_drawdown_pct": -28.250314496919128
+      },
+      "pct_invested": 53.92628205128205
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 50.57223554604153,
+       "annualized_pct": 8.615247659655644,
+       "sharpe": 0.530063497952387,
+       "max_drawdown_pct": -23.70024466640158
+      },
+      "buy_hold": {
+       "total_return_pct": 64.56439985734413,
+       "annualized_pct": 10.581686364501763,
+       "sharpe": 0.5421270760765521,
+       "max_drawdown_pct": -28.250314496919128
+      },
+      "pct_invested": 47.19551282051282
+     }
+    },
+    "p_mean": 0.5220098991666395
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5048076923076923,
+    "always_up_accuracy": 0.5288461538461539,
+    "edge_vs_always_up": -0.024038461538461564,
+    "auc": 0.5160301999587713,
+    "brier": 0.29921940817249276,
+    "brier_baserate": 0.24916789940828402,
+    "brier_skill": -0.2008746266395851,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 16.241872278953107,
+       "annualized_pct": 3.085650687733632,
+       "sharpe": 0.25368736221351806,
+       "max_drawdown_pct": -23.05137782140294
+      },
+      "buy_hold": {
+       "total_return_pct": 64.56439985734413,
+       "annualized_pct": 10.581686364501763,
+       "sharpe": 0.5421270760765521,
+       "max_drawdown_pct": -28.250314496919128
+      },
+      "pct_invested": 54.64743589743589
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 27.819111481620993,
+       "annualized_pct": 5.0809887936482445,
+       "sharpe": 0.3570973534460566,
+       "max_drawdown_pct": -21.649768296440353
+      },
+      "buy_hold": {
+       "total_return_pct": 64.56439985734413,
+       "annualized_pct": 10.581686364501763,
+       "sharpe": 0.5421270760765521,
+       "max_drawdown_pct": -28.250314496919128
+      },
+      "pct_invested": 48.717948717948715
+     }
+    },
+    "p_mean": 0.531111108389898
+   }
+  },
+  {
+   "symbol": "UNH",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5016025641025641,
+    "always_up_accuracy": 0.5200320512820513,
+    "edge_vs_always_up": -0.018429487179487225,
+    "auc": 0.5067588250576848,
+    "brier": 0.3172428959668627,
+    "brier_baserate": 0.2495987169214333,
+    "brier_skill": -0.27101172586044164,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -21.94416437352983,
+       "annualized_pct": -4.8794916184248915,
+       "sharpe": -0.07993175862862992,
+       "max_drawdown_pct": -61.583560997003694
+      },
+      "buy_hold": {
+       "total_return_pct": -3.958780949322982,
+       "annualized_pct": -0.8123050885550431,
+       "sharpe": 0.1408143555987458,
+       "max_drawdown_pct": -61.39086882560601
+      },
+      "pct_invested": 47.19551282051282
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -17.057504779139087,
+       "annualized_pct": -3.7060013394467073,
+       "sharpe": -0.035467309087439225,
+       "max_drawdown_pct": -58.69340653760236
+      },
+      "buy_hold": {
+       "total_return_pct": -3.958780949322982,
+       "annualized_pct": -0.8123050885550431,
+       "sharpe": 0.1408143555987458,
+       "max_drawdown_pct": -61.39086882560601
+      },
+      "pct_invested": 41.907051282051285
+     }
+    },
+    "p_mean": 0.47863568810414736
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5136217948717948,
+    "always_up_accuracy": 0.5200320512820513,
+    "edge_vs_always_up": -0.0064102564102564985,
+    "auc": 0.5213388518614743,
+    "brier": 0.3014891514630942,
+    "brier_baserate": 0.2495987169214333,
+    "brier_skill": -0.20789543785192843,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -3.8112676051943573,
+       "annualized_pct": -0.7815617248756124,
+       "sharpe": 0.09059667621691644,
+       "max_drawdown_pct": -57.80225794122668
+      },
+      "buy_hold": {
+       "total_return_pct": -3.958780949322982,
+       "annualized_pct": -0.8123050885550431,
+       "sharpe": 0.1408143555987458,
+       "max_drawdown_pct": -61.39086882560601
+      },
+      "pct_invested": 45.51282051282051
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 33.8915681405624,
+       "annualized_pct": 6.0704476760439885,
+       "sharpe": 0.38991837251873235,
+       "max_drawdown_pct": -43.378794721011225
+      },
+      "buy_hold": {
+       "total_return_pct": -3.958780949322982,
+       "annualized_pct": -0.8123050885550431,
+       "sharpe": 0.1408143555987458,
+       "max_drawdown_pct": -61.39086882560601
+      },
+      "pct_invested": 38.86217948717949
+     }
+    },
+    "p_mean": 0.46576855086105073
+   }
+  },
+  {
+   "symbol": "JNJ",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.530448717948718,
+    "always_up_accuracy": 0.5184294871794872,
+    "edge_vs_always_up": 0.012019230769230727,
+    "auc": 0.5430542089819389,
+    "brier": 0.29798927966549094,
+    "brier_baserate": 0.2496603540023011,
+    "brier_skill": -0.19357869556951912,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 73.3186113544306,
+       "annualized_pct": 11.745066383595137,
+       "sharpe": 0.9085066633137502,
+       "max_drawdown_pct": -13.177267797510183
+      },
+      "buy_hold": {
+       "total_return_pct": 84.05442069860096,
+       "annualized_pct": 13.109416664919692,
+       "sharpe": 0.7857035058105919,
+       "max_drawdown_pct": -18.411678335150473
+      },
+      "pct_invested": 53.44551282051282
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 79.61052274469986,
+       "annualized_pct": 12.552580083844367,
+       "sharpe": 1.0064363089103259,
+       "max_drawdown_pct": -11.702252129928757
+      },
+      "buy_hold": {
+       "total_return_pct": 84.05442069860096,
+       "annualized_pct": 13.109416664919692,
+       "sharpe": 0.7857035058105919,
+       "max_drawdown_pct": -18.411678335150473
+      },
+      "pct_invested": 47.516025641025635
+     }
+    },
+    "p_mean": 0.5162551471044142
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5072115384615384,
+    "always_up_accuracy": 0.5184294871794872,
+    "edge_vs_always_up": -0.011217948717948789,
+    "auc": 0.5176380427263165,
+    "brier": 0.30103729251622147,
+    "brier_baserate": 0.2496603540023011,
+    "brier_skill": -0.2057873334323912,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 23.071402126564266,
+       "annualized_pct": 4.280909152126933,
+       "sharpe": 0.3996870277337958,
+       "max_drawdown_pct": -18.1028792622222
+      },
+      "buy_hold": {
+       "total_return_pct": 84.05442069860096,
+       "annualized_pct": 13.109416664919692,
+       "sharpe": 0.7857035058105919,
+       "max_drawdown_pct": -18.411678335150473
+      },
+      "pct_invested": 51.60256410256411
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 27.38082477590986,
+       "annualized_pct": 5.008132400769005,
+       "sharpe": 0.4723092978047769,
+       "max_drawdown_pct": -18.66868303203118
+      },
+      "buy_hold": {
+       "total_return_pct": 84.05442069860096,
+       "annualized_pct": 13.109416664919692,
+       "sharpe": 0.7857035058105919,
+       "max_drawdown_pct": -18.411678335150473
+      },
+      "pct_invested": 45.753205128205124
+     }
+    },
+    "p_mean": 0.5107862967057512
+   }
+  },
+  {
+   "symbol": "PFE",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.483974358974359,
+    "always_up_accuracy": 0.47996794871794873,
+    "edge_vs_always_up": 0.004006410256410242,
+    "auc": 0.48833572132290337,
+    "brier": 0.32450950361606323,
+    "brier_baserate": 0.2495987169214333,
+    "brier_skill": -0.30012488693285144,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -45.229388666200684,
+       "annualized_pct": -11.446297400869076,
+       "sharpe": -0.6244442695392198,
+       "max_drawdown_pct": -60.61289431777249
+      },
+      "buy_hold": {
+       "total_return_pct": -12.160895309586106,
+       "annualized_pct": -2.584225524312722,
+       "sharpe": 0.023140517852835017,
+       "max_drawdown_pct": -58.96199380665781
+      },
+      "pct_invested": 48.79807692307692
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -43.443892585442725,
+       "annualized_pct": -10.87082200883971,
+       "sharpe": -0.639832262266754,
+       "max_drawdown_pct": -56.17051982909641
+      },
+      "buy_hold": {
+       "total_return_pct": -12.160895309586106,
+       "annualized_pct": -2.584225524312722,
+       "sharpe": 0.023140517852835017,
+       "max_drawdown_pct": -58.96199380665781
+      },
+      "pct_invested": 42.94871794871795
+     }
+    },
+    "p_mean": 0.4976133743229394
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5056089743589743,
+    "always_up_accuracy": 0.47996794871794873,
+    "edge_vs_always_up": 0.025641025641025605,
+    "auc": 0.5015395458789816,
+    "brier": 0.3070022934501179,
+    "brier_baserate": 0.2495987169214333,
+    "brier_skill": -0.22998345999812853,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 7.5439965936608955,
+       "annualized_pct": 1.4794201498330217,
+       "sharpe": 0.1707847103147029,
+       "max_drawdown_pct": -38.472200113763236
+      },
+      "buy_hold": {
+       "total_return_pct": -12.160895309586106,
+       "annualized_pct": -2.584225524312722,
+       "sharpe": 0.023140517852835017,
+       "max_drawdown_pct": -58.96199380665781
+      },
+      "pct_invested": 51.28205128205128
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 3.977794324650774,
+       "annualized_pct": 0.790754946858585,
+       "sharpe": 0.13012810074565095,
+       "max_drawdown_pct": -34.97698805833041
+      },
+      "buy_hold": {
+       "total_return_pct": -12.160895309586106,
+       "annualized_pct": -2.584225524312722,
+       "sharpe": 0.023140517852835017,
+       "max_drawdown_pct": -58.96199380665781
+      },
+      "pct_invested": 44.95192307692308
+     }
+    },
+    "p_mean": 0.5062337800746974
+   }
+  },
+  {
+   "symbol": "LLY",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.4951923076923077,
+    "always_up_accuracy": 0.5392628205128205,
+    "edge_vs_always_up": -0.044070512820512775,
+    "auc": 0.506216163834873,
+    "brier": 0.3329214520994939,
+    "brier_baserate": 0.24845843092537806,
+    "brier_skill": -0.339948299840481,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 58.117405875271324,
+       "annualized_pct": 9.692917951125724,
+       "sharpe": 0.5246629870410218,
+       "max_drawdown_pct": -37.784852298976304
+      },
+      "buy_hold": {
+       "total_return_pct": 422.39724102117464,
+       "annualized_pct": 39.63070983545849,
+       "sharpe": 1.1830536183175333,
+       "max_drawdown_pct": -34.47501744321379
+      },
+      "pct_invested": 36.618589743589745
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 52.334165653271604,
+       "annualized_pct": 8.87069540360159,
+       "sharpe": 0.5062326494448635,
+       "max_drawdown_pct": -37.62907598928285
+      },
+      "buy_hold": {
+       "total_return_pct": 422.39724102117464,
+       "annualized_pct": 39.63070983545849,
+       "sharpe": 1.1830536183175333,
+       "max_drawdown_pct": -34.47501744321379
+      },
+      "pct_invested": 32.131410256410255
+     }
+    },
+    "p_mean": 0.41213554941798347
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.48717948717948717,
+    "always_up_accuracy": 0.5392628205128205,
+    "edge_vs_always_up": -0.052083333333333315,
+    "auc": 0.504288390722915,
+    "brier": 0.3108144571698174,
+    "brier_baserate": 0.24845843092537806,
+    "brier_skill": -0.2509716656110066,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 13.797078301229027,
+       "annualized_pct": 2.644141528705757,
+       "sharpe": 0.2289755526244635,
+       "max_drawdown_pct": -29.225384881360515
+      },
+      "buy_hold": {
+       "total_return_pct": 422.39724102117464,
+       "annualized_pct": 39.63070983545849,
+       "sharpe": 1.1830536183175333,
+       "max_drawdown_pct": -34.47501744321379
+      },
+      "pct_invested": 38.70192307692308
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -10.271686833444182,
+       "annualized_pct": -2.164745182693961,
+       "sharpe": -0.008791899704724935,
+       "max_drawdown_pct": -29.363002959130256
+      },
+      "buy_hold": {
+       "total_return_pct": 422.39724102117464,
+       "annualized_pct": 39.63070983545849,
+       "sharpe": 1.1830536183175333,
+       "max_drawdown_pct": -34.47501744321379
+      },
+      "pct_invested": 32.21153846153847
+     }
+    },
+    "p_mean": 0.436983881249594
+   }
+  },
+  {
+   "symbol": "XOM",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5136217948717948,
+    "always_up_accuracy": 0.5400641025641025,
+    "edge_vs_always_up": -0.02644230769230771,
+    "auc": 0.5198952635986724,
+    "brier": 0.31511727422032,
+    "brier_baserate": 0.24839486768573307,
+    "brier_skill": -0.268614271930141,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 101.9068932257095,
+       "annualized_pct": 15.243664215312581,
+       "sharpe": 0.8545921338980506,
+       "max_drawdown_pct": -21.69427278815487
+      },
+      "buy_hold": {
+       "total_return_pct": 212.0017267189385,
+       "annualized_pct": 25.82927706438738,
+       "sharpe": 0.9994638673313294,
+       "max_drawdown_pct": -20.508655318805904
+      },
+      "pct_invested": 45.2724358974359
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 103.06674273875088,
+       "annualized_pct": 15.37703486659494,
+       "sharpe": 0.9072901945639408,
+       "max_drawdown_pct": -17.595982718028537
+      },
+      "buy_hold": {
+       "total_return_pct": 212.0017267189385,
+       "annualized_pct": 25.82927706438738,
+       "sharpe": 0.9994638673313294,
+       "max_drawdown_pct": -20.508655318805904
+      },
+      "pct_invested": 40.544871794871796
+     }
+    },
+    "p_mean": 0.45034156726577723
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5056089743589743,
+    "always_up_accuracy": 0.5400641025641025,
+    "edge_vs_always_up": -0.034455128205128194,
+    "auc": 0.5219579400117866,
+    "brier": 0.3042241012114104,
+    "brier_baserate": 0.24839486768573307,
+    "brier_skill": -0.22476001233774268,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 32.89306628340387,
+       "annualized_pct": 5.910244076414672,
+       "sharpe": 0.40897069649467566,
+       "max_drawdown_pct": -22.08071236622269
+      },
+      "buy_hold": {
+       "total_return_pct": 212.0017267189385,
+       "annualized_pct": 25.82927706438738,
+       "sharpe": 0.9994638673313294,
+       "max_drawdown_pct": -20.508655318805904
+      },
+      "pct_invested": 43.669871794871796
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 19.618871253012713,
+       "annualized_pct": 3.6834774964688233,
+       "sharpe": 0.29863508620824536,
+       "max_drawdown_pct": -21.312724923329867
+      },
+      "buy_hold": {
+       "total_return_pct": 212.0017267189385,
+       "annualized_pct": 25.82927706438738,
+       "sharpe": 0.9994638673313294,
+       "max_drawdown_pct": -20.508655318805904
+      },
+      "pct_invested": 37.90064102564102
+     }
+    },
+    "p_mean": 0.4602452306053004
+   }
+  },
+  {
+   "symbol": "CVX",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.49198717948717946,
+    "always_up_accuracy": 0.5488782051282052,
+    "edge_vs_always_up": -0.056891025641025716,
+    "auc": 0.4972060520413322,
+    "brier": 0.30868538775514553,
+    "brier_baserate": 0.24761092106344507,
+    "brier_skill": -0.2466549796325479,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 13.987076683378286,
+       "annualized_pct": 2.6787235011214605,
+       "sharpe": 0.23793152435755788,
+       "max_drawdown_pct": -21.95235129470475
+      },
+      "buy_hold": {
+       "total_return_pct": 128.47696030046706,
+       "annualized_pct": 18.15675739094724,
+       "sharpe": 0.7895862922305169,
+       "max_drawdown_pct": -24.948921255879387
+      },
+      "pct_invested": 45.753205128205124
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 6.787528882036842,
+       "annualized_pct": 1.3348793020458327,
+       "sharpe": 0.1629039871428083,
+       "max_drawdown_pct": -29.226886617291076
+      },
+      "buy_hold": {
+       "total_return_pct": 128.47696030046706,
+       "annualized_pct": 18.15675739094724,
+       "sharpe": 0.7895862922305169,
+       "max_drawdown_pct": -24.948921255879387
+      },
+      "pct_invested": 38.54166666666667
+     }
+    },
+    "p_mean": 0.46690789236722946
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5088141025641025,
+    "always_up_accuracy": 0.5488782051282052,
+    "edge_vs_always_up": -0.040064102564102644,
+    "auc": 0.5047516562730938,
+    "brier": 0.30962363116169506,
+    "brier_baserate": 0.24761092106344507,
+    "brier_skill": -0.25044416390002655,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 42.20692575759308,
+       "annualized_pct": 7.368831810094734,
+       "sharpe": 0.48004193885086455,
+       "max_drawdown_pct": -26.045112130738406
+      },
+      "buy_hold": {
+       "total_return_pct": 128.47696030046706,
+       "annualized_pct": 18.15675739094724,
+       "sharpe": 0.7895862922305169,
+       "max_drawdown_pct": -24.948921255879387
+      },
+      "pct_invested": 44.871794871794876
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 56.9752805057212,
+       "annualized_pct": 9.532462650623753,
+       "sharpe": 0.6241965221149871,
+       "max_drawdown_pct": -26.760916039819254
+      },
+      "buy_hold": {
+       "total_return_pct": 128.47696030046706,
+       "annualized_pct": 18.15675739094724,
+       "sharpe": 0.7895862922305169,
+       "max_drawdown_pct": -24.948921255879387
+      },
+      "pct_invested": 37.5
+     }
+    },
+    "p_mean": 0.45834453894311966
+   }
+  },
+  {
+   "symbol": "WMT",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.483974358974359,
+    "always_up_accuracy": 0.5448717948717948,
+    "edge_vs_always_up": -0.06089743589743585,
+    "auc": 0.5187733015741508,
+    "brier": 0.3187680853654014,
+    "brier_baserate": 0.24798652202498353,
+    "brier_skill": -0.28542504149998504,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 20.612954820912634,
+       "annualized_pct": 3.856891142554586,
+       "sharpe": 0.3284400401311236,
+       "max_drawdown_pct": -20.16726234667903
+      },
+      "buy_hold": {
+       "total_return_pct": 145.52056397151048,
+       "annualized_pct": 19.885799423904626,
+       "sharpe": 0.9178908244730577,
+       "max_drawdown_pct": -25.73966568369172
+      },
+      "pct_invested": 36.858974358974365
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 39.696024550452805,
+       "annualized_pct": 6.983304814773561,
+       "sharpe": 0.5736291838397625,
+       "max_drawdown_pct": -21.32328227276447
+      },
+      "buy_hold": {
+       "total_return_pct": 145.52056397151048,
+       "annualized_pct": 19.885799423904626,
+       "sharpe": 0.9178908244730577,
+       "max_drawdown_pct": -25.73966568369172
+      },
+      "pct_invested": 31.490384615384613
+     }
+    },
+    "p_mean": 0.41630647450130287
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.500801282051282,
+    "always_up_accuracy": 0.5448717948717948,
+    "edge_vs_always_up": -0.044070512820512775,
+    "auc": 0.49703293289146644,
+    "brier": 0.31725220188981756,
+    "brier_baserate": 0.24798652202498353,
+    "brier_skill": -0.27931227592222063,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 107.67708518146418,
+       "annualized_pct": 15.901238982986342,
+       "sharpe": 1.2553644946997855,
+       "max_drawdown_pct": -10.514295876319755
+      },
+      "buy_hold": {
+       "total_return_pct": 145.52056397151048,
+       "annualized_pct": 19.885799423904626,
+       "sharpe": 0.9178908244730577,
+       "max_drawdown_pct": -25.73966568369172
+      },
+      "pct_invested": 36.618589743589745
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 90.34931184526988,
+       "annualized_pct": 13.88010552114125,
+       "sharpe": 1.182586892988207,
+       "max_drawdown_pct": -10.514295876319734
+      },
+      "buy_hold": {
+       "total_return_pct": 145.52056397151048,
+       "annualized_pct": 19.885799423904626,
+       "sharpe": 0.9178908244730577,
+       "max_drawdown_pct": -25.73966568369172
+      },
+      "pct_invested": 30.689102564102566
+     }
+    },
+    "p_mean": 0.43040948923683175
+   }
+  },
+  {
+   "symbol": "COST",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.4751602564102564,
+    "always_up_accuracy": 0.5296474358974359,
+    "edge_vs_always_up": -0.054487179487179516,
+    "auc": 0.4806408131812055,
+    "brier": 0.32516884047087874,
+    "brier_baserate": 0.2491210295447074,
+    "brier_skill": -0.3052645176730202,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 16.523093956038927,
+       "annualized_pct": 3.135960362835588,
+       "sharpe": 0.27174572186203294,
+       "max_drawdown_pct": -27.06180885210685
+      },
+      "buy_hold": {
+       "total_return_pct": 119.56811123256226,
+       "annualized_pct": 17.211633153730443,
+       "sharpe": 0.8071878780212958,
+       "max_drawdown_pct": -31.40242312150644
+      },
+      "pct_invested": 48.878205128205124
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 15.08837042504343,
+       "annualized_pct": 2.878270891329837,
+       "sharpe": 0.2602217015166348,
+       "max_drawdown_pct": -22.241387881884283
+      },
+      "buy_hold": {
+       "total_return_pct": 119.56811123256226,
+       "annualized_pct": 17.211633153730443,
+       "sharpe": 0.8071878780212958,
+       "max_drawdown_pct": -31.40242312150644
+      },
+      "pct_invested": 43.269230769230774
+     }
+    },
+    "p_mean": 0.49041495910988975
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.47115384615384615,
+    "always_up_accuracy": 0.5296474358974359,
+    "edge_vs_always_up": -0.05849358974358976,
+    "auc": 0.47245539384598734,
+    "brier": 0.31911328365305935,
+    "brier_baserate": 0.2491210295447074,
+    "brier_skill": -0.2809568274355221,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -4.936380089828085,
+       "annualized_pct": -1.0170052274028007,
+       "sharpe": 0.022802690327262076,
+       "max_drawdown_pct": -32.68956560553738
+      },
+      "buy_hold": {
+       "total_return_pct": 119.56811123256226,
+       "annualized_pct": 17.211633153730443,
+       "sharpe": 0.8071878780212958,
+       "max_drawdown_pct": -31.40242312150644
+      },
+      "pct_invested": 47.03525641025641
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -4.169516998077915,
+       "annualized_pct": -0.8562901816617119,
+       "sharpe": 0.025128358745357477,
+       "max_drawdown_pct": -27.42850745449519
+      },
+      "buy_hold": {
+       "total_return_pct": 119.56811123256226,
+       "annualized_pct": 17.211633153730443,
+       "sharpe": 0.8071878780212958,
+       "max_drawdown_pct": -31.40242312150644
+      },
+      "pct_invested": 40.86538461538461
+     }
+    },
+    "p_mean": 0.4837568108147631
+   }
+  },
+  {
+   "symbol": "HD",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5016025641025641,
+    "always_up_accuracy": 0.5032051282051282,
+    "edge_vs_always_up": -0.0016025641025640969,
+    "auc": 0.4957186151633449,
+    "brier": 0.3068069751003566,
+    "brier_baserate": 0.24998972715318876,
+    "brier_skill": -0.2272783309705817,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -31.95270489629094,
+       "annualized_pct": -7.478928075006353,
+       "sharpe": -0.3077775937007198,
+       "max_drawdown_pct": -41.702775621897196
+      },
+      "buy_hold": {
+       "total_return_pct": -7.520235837508915,
+       "annualized_pct": -1.5662460726496463,
+       "sharpe": 0.05931279963385497,
+       "max_drawdown_pct": -34.72936853417823
+      },
+      "pct_invested": 52.56410256410257
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -34.19145987423887,
+       "annualized_pct": -8.101802297248073,
+       "sharpe": -0.3667102797347323,
+       "max_drawdown_pct": -43.018800515821354
+      },
+      "buy_hold": {
+       "total_return_pct": -7.520235837508915,
+       "annualized_pct": -1.5662460726496463,
+       "sharpe": 0.05931279963385497,
+       "max_drawdown_pct": -34.72936853417823
+      },
+      "pct_invested": 45.993589743589745
+     }
+    },
+    "p_mean": 0.5146033120437119
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5016025641025641,
+    "always_up_accuracy": 0.5032051282051282,
+    "edge_vs_always_up": -0.0016025641025640969,
+    "auc": 0.5015615368810356,
+    "brier": 0.29697352913848185,
+    "brier_baserate": 0.24998972715318876,
+    "brier_skill": -0.18794293077692092,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -32.93574770078551,
+       "annualized_pct": -7.750388380059626,
+       "sharpe": -0.33768317996853275,
+       "max_drawdown_pct": -38.729711101267505
+      },
+      "buy_hold": {
+       "total_return_pct": -7.520235837508915,
+       "annualized_pct": -1.5662460726496463,
+       "sharpe": 0.05931279963385497,
+       "max_drawdown_pct": -34.72936853417823
+      },
+      "pct_invested": 51.92307692307693
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -16.16296118389573,
+       "annualized_pct": -3.497192663456272,
+       "sharpe": -0.12089736454362003,
+       "max_drawdown_pct": -33.729184488116736
+      },
+      "buy_hold": {
+       "total_return_pct": -7.520235837508915,
+       "annualized_pct": -1.5662460726496463,
+       "sharpe": 0.05931279963385497,
+       "max_drawdown_pct": -34.72936853417823
+      },
+      "pct_invested": 45.2724358974359
+     }
+    },
+    "p_mean": 0.5163691898103421
+   }
+  },
+  {
+   "symbol": "PG",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.49198717948717946,
+    "always_up_accuracy": 0.5296474358974359,
+    "edge_vs_always_up": -0.03766025641025644,
+    "auc": 0.5005528250778981,
+    "brier": 0.3158400685436233,
+    "brier_baserate": 0.2491210295447074,
+    "brier_skill": -0.26781777163032494,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -0.9342850668343616,
+       "annualized_pct": -0.18936101042174025,
+       "sharpe": 0.054745536256912204,
+       "max_drawdown_pct": -20.427302290106546
+      },
+      "buy_hold": {
+       "total_return_pct": 16.26570787677666,
+       "annualized_pct": 3.0899185666736217,
+       "sharpe": 0.2583621349614093,
+       "max_drawdown_pct": -23.772472951467105
+      },
+      "pct_invested": 49.118589743589745
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -6.957092521824437,
+       "annualized_pct": -1.445506538755914,
+       "sharpe": -0.048830418351192596,
+       "max_drawdown_pct": -23.955491787263323
+      },
+      "buy_hold": {
+       "total_return_pct": 16.26570787677666,
+       "annualized_pct": 3.0899185666736217,
+       "sharpe": 0.2583621349614093,
+       "max_drawdown_pct": -23.772472951467105
+      },
+      "pct_invested": 42.628205128205124
+     }
+    },
+    "p_mean": 0.47926467130496464
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.4855769230769231,
+    "always_up_accuracy": 0.5296474358974359,
+    "edge_vs_always_up": -0.04407051282051283,
+    "auc": 0.5066532304829552,
+    "brier": 0.302777055082001,
+    "brier_baserate": 0.2491210295447074,
+    "brier_skill": -0.21538135754879906,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -31.776796674908535,
+       "annualized_pct": -7.430682848665803,
+       "sharpe": -0.48771487919617973,
+       "max_drawdown_pct": -35.58532800517556
+      },
+      "buy_hold": {
+       "total_return_pct": 16.26570787677666,
+       "annualized_pct": 3.0899185666736217,
+       "sharpe": 0.2583621349614093,
+       "max_drawdown_pct": -23.772472951467105
+      },
+      "pct_invested": 50.080128205128204
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -39.23583851335486,
+       "annualized_pct": -9.569810824046066,
+       "sharpe": -0.6922102525164069,
+       "max_drawdown_pct": -41.73508352624095
+      },
+      "buy_hold": {
+       "total_return_pct": 16.26570787677666,
+       "annualized_pct": 3.0899185666736217,
+       "sharpe": 0.2583621349614093,
+       "max_drawdown_pct": -23.772472951467105
+      },
+      "pct_invested": 43.50961538461539
+     }
+    },
+    "p_mean": 0.49155117842691165
+   }
+  },
+  {
+   "symbol": "KO",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5096153846153846,
+    "always_up_accuracy": 0.5256410256410257,
+    "edge_vs_always_up": -0.01602564102564108,
+    "auc": 0.5221757580751484,
+    "brier": 0.3169125613776201,
+    "brier_baserate": 0.24934253780407628,
+    "brier_skill": -0.27099276428572217,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 4.592062007626496,
+       "annualized_pct": 0.9107055202021375,
+       "sharpe": 0.14181176552954242,
+       "max_drawdown_pct": -14.683534034222651
+      },
+      "buy_hold": {
+       "total_return_pct": 82.16618011279557,
+       "annualized_pct": 12.874138815575819,
+       "sharpe": 0.8091018575119345,
+       "max_drawdown_pct": -17.274747074306006
+      },
+      "pct_invested": 35.09615384615385
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 4.387186193168979,
+       "annualized_pct": 0.8707612129144726,
+       "sharpe": 0.14308062437337096,
+       "max_drawdown_pct": -12.355490438012627
+      },
+      "buy_hold": {
+       "total_return_pct": 82.16618011279557,
+       "annualized_pct": 12.874138815575819,
+       "sharpe": 0.8091018575119345,
+       "max_drawdown_pct": -17.274747074306006
+      },
+      "pct_invested": 29.086538461538463
+     }
+    },
+    "p_mean": 0.38766975066727566
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5096153846153846,
+    "always_up_accuracy": 0.5256410256410257,
+    "edge_vs_always_up": -0.01602564102564108,
+    "auc": 0.5189570286750165,
+    "brier": 0.30425550234107984,
+    "brier_baserate": 0.24934253780407628,
+    "brier_skill": -0.2202310324608634,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -1.606242682595671,
+       "annualized_pct": -0.3264365552621329,
+       "sharpe": 0.022356347035379927,
+       "max_drawdown_pct": -20.813760068057494
+      },
+      "buy_hold": {
+       "total_return_pct": 82.16618011279557,
+       "annualized_pct": 12.874138815575819,
+       "sharpe": 0.8091018575119345,
+       "max_drawdown_pct": -17.274747074306006
+      },
+      "pct_invested": 38.94230769230769
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 8.180123638737236,
+       "annualized_pct": 1.6003403783064085,
+       "sharpe": 0.21412769890798988,
+       "max_drawdown_pct": -14.476784677954907
+      },
+      "buy_hold": {
+       "total_return_pct": 82.16618011279557,
+       "annualized_pct": 12.874138815575819,
+       "sharpe": 0.8091018575119345,
+       "max_drawdown_pct": -17.274747074306006
+      },
+      "pct_invested": 31.89102564102564
+     }
+    },
+    "p_mean": 0.42704866564823674
+   }
+  },
+  {
+   "symbol": "PEP",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.48878205128205127,
+    "always_up_accuracy": 0.49759615384615385,
+    "edge_vs_always_up": -0.008814102564102588,
+    "auc": 0.4910791104536337,
+    "brier": 0.3263753044526061,
+    "brier_baserate": 0.24999422152366868,
+    "brier_skill": -0.30553139373945837,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -31.328815783301657,
+       "annualized_pct": -7.3082648103567465,
+       "sharpe": -0.5016062728665063,
+       "max_drawdown_pct": -31.922652458688074
+      },
+      "buy_hold": {
+       "total_return_pct": -8.467817279665436,
+       "annualized_pct": -1.7707411473132706,
+       "sharpe": 0.0004283084385275779,
+       "max_drawdown_pct": -30.32267608246675
+      },
+      "pct_invested": 44.79166666666667
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -17.82837881536079,
+       "annualized_pct": -3.887389185054224,
+       "sharpe": -0.26579242252675195,
+       "max_drawdown_pct": -28.516212639648348
+      },
+      "buy_hold": {
+       "total_return_pct": -8.467817279665436,
+       "annualized_pct": -1.7707411473132706,
+       "sharpe": 0.0004283084385275779,
+       "max_drawdown_pct": -30.32267608246675
+      },
+      "pct_invested": 38.06089743589743
+     }
+    },
+    "p_mean": 0.44550799353731774
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5056089743589743,
+    "always_up_accuracy": 0.49759615384615385,
+    "edge_vs_always_up": 0.008012820512820484,
+    "auc": 0.5043878911155799,
+    "brier": 0.313573792593003,
+    "brier_baserate": 0.24999422152366868,
+    "brier_skill": -0.2543241627019559,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -40.000002560668335,
+       "annualized_pct": -9.800607172049403,
+       "sharpe": -0.6959708028316465,
+       "max_drawdown_pct": -42.6799652253132
+      },
+      "buy_hold": {
+       "total_return_pct": -8.467817279665436,
+       "annualized_pct": -1.7707411473132706,
+       "sharpe": 0.0004283084385275779,
+       "max_drawdown_pct": -30.32267608246675
+      },
+      "pct_invested": 47.59615384615385
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -34.102548842048584,
+       "annualized_pct": -8.076745109152627,
+       "sharpe": -0.6000336032508921,
+       "max_drawdown_pct": -36.48765499097685
+      },
+      "buy_hold": {
+       "total_return_pct": -8.467817279665436,
+       "annualized_pct": -1.7707411473132706,
+       "sharpe": 0.0004283084385275779,
+       "max_drawdown_pct": -30.32267608246675
+      },
+      "pct_invested": 41.506410256410255
+     }
+    },
+    "p_mean": 0.47581804458586235
+   }
+  },
+  {
+   "symbol": "DIS",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.49198717948717946,
+    "always_up_accuracy": 0.4807692307692308,
+    "edge_vs_always_up": 0.011217948717948678,
+    "auc": 0.4995961934156379,
+    "brier": 0.3188341734907892,
+    "brier_baserate": 0.2496301775147929,
+    "brier_skill": -0.27722608165791685,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -44.80920325689417,
+       "annualized_pct": -11.30953692389035,
+       "sharpe": -0.37072537512867293,
+       "max_drawdown_pct": -50.3001585491467
+      },
+      "buy_hold": {
+       "total_return_pct": -38.83772440496873,
+       "annualized_pct": -9.450487047450661,
+       "sharpe": -0.1873279598063986,
+       "max_drawdown_pct": -55.15349936664416
+      },
+      "pct_invested": 69.07051282051282
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -52.153446535414375,
+       "annualized_pct": -13.830323973598802,
+       "sharpe": -0.5151663394676257,
+       "max_drawdown_pct": -53.76023355016496
+      },
+      "buy_hold": {
+       "total_return_pct": -38.83772440496873,
+       "annualized_pct": -9.450487047450661,
+       "sharpe": -0.1873279598063986,
+       "max_drawdown_pct": -55.15349936664416
+      },
+      "pct_invested": 60.49679487179487
+     }
+    },
+    "p_mean": 0.6238102901500101
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.49599358974358976,
+    "always_up_accuracy": 0.4807692307692308,
+    "edge_vs_always_up": 0.015224358974358976,
+    "auc": 0.5104140946502058,
+    "brier": 0.3034591539178692,
+    "brier_baserate": 0.2496301775147929,
+    "brier_skill": -0.21563489213913822,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -54.397076485003424,
+       "annualized_pct": -14.661942357859758,
+       "sharpe": -0.5262913054582966,
+       "max_drawdown_pct": -68.20856118137891
+      },
+      "buy_hold": {
+       "total_return_pct": -38.83772440496873,
+       "annualized_pct": -9.450487047450661,
+       "sharpe": -0.1873279598063986,
+       "max_drawdown_pct": -55.15349936664416
+      },
+      "pct_invested": 66.90705128205127
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -38.822528641198716,
+       "annualized_pct": -9.445944830014174,
+       "sharpe": -0.3221154805632149,
+       "max_drawdown_pct": -56.00916588171172
+      },
+      "buy_hold": {
+       "total_return_pct": -38.83772440496873,
+       "annualized_pct": -9.450487047450661,
+       "sharpe": -0.1873279598063986,
+       "max_drawdown_pct": -55.15349936664416
+      },
+      "pct_invested": 57.77243589743589
+     }
+    },
+    "p_mean": 0.5898893221776981
+   }
+  },
+  {
+   "symbol": "NFLX",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.4935897435897436,
+    "always_up_accuracy": 0.4935897435897436,
+    "edge_vs_always_up": 0.0,
+    "auc": 0.4797591648857471,
+    "brier": 0.33049361124487675,
+    "brier_baserate": 0.24995890861275477,
+    "brier_skill": -0.32219176775527214,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -43.54579853616547,
+       "annualized_pct": -10.903273778012757,
+       "sharpe": -0.21350489515633647,
+       "max_drawdown_pct": -60.32368657812246
+      },
+      "buy_hold": {
+       "total_return_pct": 10.826777619180206,
+       "annualized_pct": 2.0974267660731405,
+       "sharpe": 0.2757150899872772,
+       "max_drawdown_pct": -75.9473182516135
+      },
+      "pct_invested": 48.717948717948715
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -48.30770397657711,
+       "annualized_pct": -12.474608838636614,
+       "sharpe": -0.2880385542883931,
+       "max_drawdown_pct": -62.70258319358313
+      },
+      "buy_hold": {
+       "total_return_pct": 10.826777619180206,
+       "annualized_pct": 2.0974267660731405,
+       "sharpe": 0.2757150899872772,
+       "max_drawdown_pct": -75.9473182516135
+      },
+      "pct_invested": 42.94871794871795
+     }
+    },
+    "p_mean": 0.49605943802117297
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.4807692307692308,
+    "always_up_accuracy": 0.4935897435897436,
+    "edge_vs_always_up": -0.01282051282051283,
+    "auc": 0.472284440243301,
+    "brier": 0.32858812852284397,
+    "brier_baserate": 0.24995890861275477,
+    "brier_skill": -0.3145685838783381,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -50.10748140130492,
+       "annualized_pct": -13.098677758701772,
+       "sharpe": -0.28286258774880435,
+       "max_drawdown_pct": -62.824197722898624
+      },
+      "buy_hold": {
+       "total_return_pct": 10.826777619180206,
+       "annualized_pct": 2.0974267660731405,
+       "sharpe": 0.2757150899872772,
+       "max_drawdown_pct": -75.9473182516135
+      },
+      "pct_invested": 50.32051282051282
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -61.088870752638535,
+       "annualized_pct": -17.353123003131287,
+       "sharpe": -0.4762077204449302,
+       "max_drawdown_pct": -66.20803850001073
+      },
+      "buy_hold": {
+       "total_return_pct": 10.826777619180206,
+       "annualized_pct": 2.0974267660731405,
+       "sharpe": 0.2757150899872772,
+       "max_drawdown_pct": -75.9473182516135
+      },
+      "pct_invested": 42.94871794871795
+     }
+    },
+    "p_mean": 0.49141246090846086
+   }
+  },
+  {
+   "symbol": "INTC",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.4983974358974359,
+    "always_up_accuracy": 0.4951923076923077,
+    "edge_vs_always_up": 0.0032051282051281937,
+    "auc": 0.4961267786510505,
+    "brier": 0.3193014583627807,
+    "brier_baserate": 0.24997688609467458,
+    "brier_skill": -0.27732392922860294,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 35.83937809482094,
+       "annualized_pct": 6.3802374929567085,
+       "sharpe": 0.3491296395944047,
+       "max_drawdown_pct": -53.17490879629649
+      },
+      "buy_hold": {
+       "total_return_pct": 125.28841585360131,
+       "annualized_pct": 17.821925584691556,
+       "sharpe": 0.5710374517545014,
+       "max_drawdown_pct": -65.03688485516199
+      },
+      "pct_invested": 45.83333333333333
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -12.204561068099329,
+       "annualized_pct": -2.59400587703581,
+       "sharpe": 0.0553903167947493,
+       "max_drawdown_pct": -49.6269867998309
+      },
+      "buy_hold": {
+       "total_return_pct": 125.28841585360131,
+       "annualized_pct": 17.821925584691556,
+       "sharpe": 0.5710374517545014,
+       "max_drawdown_pct": -65.03688485516199
+      },
+      "pct_invested": 38.94230769230769
+     }
+    },
+    "p_mean": 0.49652988626920164
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5016025641025641,
+    "always_up_accuracy": 0.4951923076923077,
+    "edge_vs_always_up": 0.0064102564102563875,
+    "auc": 0.5133482303385216,
+    "brier": 0.3038597079887384,
+    "brier_baserate": 0.24997688609467458,
+    "brier_skill": -0.215551216497899,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 84.53807263769897,
+       "annualized_pct": 13.169370433023776,
+       "sharpe": 0.5184466966356573,
+       "max_drawdown_pct": -52.257708721876504
+      },
+      "buy_hold": {
+       "total_return_pct": 125.28841585360131,
+       "annualized_pct": 17.821925584691556,
+       "sharpe": 0.5710374517545014,
+       "max_drawdown_pct": -65.03688485516199
+      },
+      "pct_invested": 49.03846153846153
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 67.85073099343305,
+       "annualized_pct": 11.024082298969695,
+       "sharpe": 0.47611507101178285,
+       "max_drawdown_pct": -50.08872625901254
+      },
+      "buy_hold": {
+       "total_return_pct": 125.28841585360131,
+       "annualized_pct": 17.821925584691556,
+       "sharpe": 0.5710374517545014,
+       "max_drawdown_pct": -65.03688485516199
+      },
+      "pct_invested": 41.266025641025635
+     }
+    },
+    "p_mean": 0.4976908881456042
+   }
+  },
+  {
+   "symbol": "AMD",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5048076923076923,
+    "always_up_accuracy": 0.5072115384615384,
+    "edge_vs_always_up": -0.0024038461538461453,
+    "auc": 0.509842150554207,
+    "brier": 0.3033526476652233,
+    "brier_baserate": 0.2499479937130178,
+    "brier_skill": -0.21366306309913008,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 91.8133090809836,
+       "annualized_pct": 14.05642243346319,
+       "sharpe": 0.518226407807706,
+       "max_drawdown_pct": -48.80976677367572
+      },
+      "buy_hold": {
+       "total_return_pct": 475.48877805871274,
+       "annualized_pct": 42.386554572287636,
+       "sharpe": 0.8989250907616201,
+       "max_drawdown_pct": -65.44994295506879
+      },
+      "pct_invested": 48.4775641025641
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 75.89163134543044,
+       "annualized_pct": 12.078074383586547,
+       "sharpe": 0.4802792232481254,
+       "max_drawdown_pct": -47.630630580209896
+      },
+      "buy_hold": {
+       "total_return_pct": 475.48877805871274,
+       "annualized_pct": 42.386554572287636,
+       "sharpe": 0.8989250907616201,
+       "max_drawdown_pct": -65.44994295506879
+      },
+      "pct_invested": 41.42628205128205
+     }
+    },
+    "p_mean": 0.4845129964091123
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.49198717948717946,
+    "always_up_accuracy": 0.5072115384615384,
+    "edge_vs_always_up": -0.015224358974358976,
+    "auc": 0.4944142616781618,
+    "brier": 0.3031961495982227,
+    "brier_baserate": 0.2499479937130178,
+    "brier_skill": -0.2130369405818986,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -6.192607265569084,
+       "annualized_pct": -1.282528546090922,
+       "sharpe": 0.1736237374937991,
+       "max_drawdown_pct": -61.59104621627716
+      },
+      "buy_hold": {
+       "total_return_pct": 475.48877805871274,
+       "annualized_pct": 42.386554572287636,
+       "sharpe": 0.8989250907616201,
+       "max_drawdown_pct": -65.44994295506879
+      },
+      "pct_invested": 48.157051282051285
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 0.7980238636905224,
+       "annualized_pct": 0.1606287387569294,
+       "sharpe": 0.19529122857252287,
+       "max_drawdown_pct": -57.288434756735164
+      },
+      "buy_hold": {
+       "total_return_pct": 475.48877805871274,
+       "annualized_pct": 42.386554572287636,
+       "sharpe": 0.8989250907616201,
+       "max_drawdown_pct": -65.44994295506879
+      },
+      "pct_invested": 42.2275641025641
+     }
+    },
+    "p_mean": 0.4872312104204096
+   }
+  },
+  {
+   "symbol": "CSCO",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5088141025641025,
+    "always_up_accuracy": 0.53125,
+    "edge_vs_always_up": -0.022435897435897467,
+    "auc": 0.5045210194531461,
+    "brier": 0.3137909875266041,
+    "brier_baserate": 0.2490234375,
+    "brier_skill": -0.2600861616754613,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 72.28606689928316,
+       "annualized_pct": 11.610321347828446,
+       "sharpe": 0.7137549742740605,
+       "max_drawdown_pct": -25.504111171763753
+      },
+      "buy_hold": {
+       "total_return_pct": 143.4075985084495,
+       "annualized_pct": 19.676747188936062,
+       "sharpe": 0.8212983121196336,
+       "max_drawdown_pct": -36.675051391721226
+      },
+      "pct_invested": 44.55128205128205
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 63.050358198618504,
+       "annualized_pct": 10.375494555325183,
+       "sharpe": 0.6705252575274151,
+       "max_drawdown_pct": -25.273121568140038
+      },
+      "buy_hold": {
+       "total_return_pct": 143.4075985084495,
+       "annualized_pct": 19.676747188936062,
+       "sharpe": 0.8212983121196336,
+       "max_drawdown_pct": -36.675051391721226
+      },
+      "pct_invested": 37.980769230769226
+     }
+    },
+    "p_mean": 0.46558022004319355
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5120192307692307,
+    "always_up_accuracy": 0.53125,
+    "edge_vs_always_up": -0.019230769230769273,
+    "auc": 0.516102667233889,
+    "brier": 0.30494356773835557,
+    "brier_baserate": 0.2490234375,
+    "brier_skill": -0.22455769946696513,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 58.34815450624722,
+       "annualized_pct": 9.7252230622348,
+       "sharpe": 0.5975892931163139,
+       "max_drawdown_pct": -26.602781181384145
+      },
+      "buy_hold": {
+       "total_return_pct": 143.4075985084495,
+       "annualized_pct": 19.676747188936062,
+       "sharpe": 0.8212983121196336,
+       "max_drawdown_pct": -36.675051391721226
+      },
+      "pct_invested": 47.756410256410255
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 70.00052023179163,
+       "annualized_pct": 11.309754178945575,
+       "sharpe": 0.7097327418282947,
+       "max_drawdown_pct": -25.454609822262448
+      },
+      "buy_hold": {
+       "total_return_pct": 143.4075985084495,
+       "annualized_pct": 19.676747188936062,
+       "sharpe": 0.8212983121196336,
+       "max_drawdown_pct": -36.675051391721226
+      },
+      "pct_invested": 41.02564102564102
+     }
+    },
+    "p_mean": 0.4783722655608868
+   }
+  },
+  {
+   "symbol": "ORCL",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.483974358974359,
+    "always_up_accuracy": 0.5120192307692307,
+    "edge_vs_always_up": -0.02804487179487175,
+    "auc": 0.47306187058494,
+    "brier": 0.3269268523573473,
+    "brier_baserate": 0.24985553809171598,
+    "brier_skill": -0.30846350196704586,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -31.338818028069447,
+       "annualized_pct": -7.310991119828303,
+       "sharpe": -0.04594653029567498,
+       "max_drawdown_pct": -55.99605787284227
+      },
+      "buy_hold": {
+       "total_return_pct": 60.376032338840325,
+       "annualized_pct": 10.007524525435318,
+       "sharpe": 0.43033436745547465,
+       "max_drawdown_pct": -64.5781329685851
+      },
+      "pct_invested": 54.40705128205128
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -41.250410066458606,
+       "annualized_pct": -10.183371955288312,
+       "sharpe": -0.2058911723842868,
+       "max_drawdown_pct": -56.01956584318971
+      },
+      "buy_hold": {
+       "total_return_pct": 60.376032338840325,
+       "annualized_pct": 10.007524525435318,
+       "sharpe": 0.43033436745547465,
+       "max_drawdown_pct": -64.5781329685851
+      },
+      "pct_invested": 48.95833333333333
+     }
+    },
+    "p_mean": 0.5251586779038637
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.4983974358974359,
+    "always_up_accuracy": 0.5120192307692307,
+    "edge_vs_always_up": -0.013621794871794823,
+    "auc": 0.49020303172804386,
+    "brier": 0.3102479231009065,
+    "brier_baserate": 0.24985553809171598,
+    "brier_skill": -0.24170921113232202,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -20.85905118361947,
+       "annualized_pct": -4.613949209991375,
+       "sharpe": 0.04825962112485439,
+       "max_drawdown_pct": -55.103192497349674
+      },
+      "buy_hold": {
+       "total_return_pct": 60.376032338840325,
+       "annualized_pct": 10.007524525435318,
+       "sharpe": 0.43033436745547465,
+       "max_drawdown_pct": -64.5781329685851
+      },
+      "pct_invested": 54.88782051282052
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -56.99003616383508,
+       "annualized_pct": -15.66474923228325,
+       "sharpe": -0.4144949557015568,
+       "max_drawdown_pct": -61.14225682165358
+      },
+      "buy_hold": {
+       "total_return_pct": 60.376032338840325,
+       "annualized_pct": 10.007524525435318,
+       "sharpe": 0.43033436745547465,
+       "max_drawdown_pct": -64.5781329685851
+      },
+      "pct_invested": 46.47435897435898
+     }
+    },
+    "p_mean": 0.5205426313212882
+   }
+  },
+  {
+   "symbol": "CRM",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.53125,
+    "always_up_accuracy": 0.49919871794871795,
+    "edge_vs_always_up": 0.03205128205128205,
+    "auc": 0.5278805778491171,
+    "brier": 0.2981277992670334,
+    "brier_baserate": 0.2499993579470743,
+    "brier_skill": -0.19251425969721114,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 107.86567151529295,
+       "annualized_pct": 15.922483084092853,
+       "sharpe": 0.7174297857488526,
+       "max_drawdown_pct": -25.245487943694624
+      },
+      "buy_hold": {
+       "total_return_pct": -21.614856206530565,
+       "annualized_pct": -4.798595564031438,
+       "sharpe": 0.07181924174392797,
+       "max_drawdown_pct": -58.66959244229436
+      },
+      "pct_invested": 42.30769230769231
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 106.41076200869306,
+       "annualized_pct": 15.758188508663284,
+       "sharpe": 0.7640989813077566,
+       "max_drawdown_pct": -27.610837617280005
+      },
+      "buy_hold": {
+       "total_return_pct": -21.614856206530565,
+       "annualized_pct": -4.798595564031438,
+       "sharpe": 0.07181924174392797,
+       "max_drawdown_pct": -58.66959244229436
+      },
+      "pct_invested": 35.81730769230769
+     }
+    },
+    "p_mean": 0.4524436425805713
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5280448717948718,
+    "always_up_accuracy": 0.49919871794871795,
+    "edge_vs_always_up": 0.028846153846153855,
+    "auc": 0.5270497592295345,
+    "brier": 0.2906715310198412,
+    "brier_baserate": 0.2499993579470743,
+    "brier_skill": -0.16268911011114406,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 142.70929809537716,
+       "annualized_pct": 19.607340449415677,
+       "sharpe": 0.7635145985893749,
+       "max_drawdown_pct": -25.551102238730667
+      },
+      "buy_hold": {
+       "total_return_pct": -21.614856206530565,
+       "annualized_pct": -4.798595564031438,
+       "sharpe": 0.07181924174392797,
+       "max_drawdown_pct": -58.66959244229436
+      },
+      "pct_invested": 45.3525641025641
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 167.69409480592242,
+       "annualized_pct": 21.99727790737842,
+       "sharpe": 0.8545759680872234,
+       "max_drawdown_pct": -22.89276211301131
+      },
+      "buy_hold": {
+       "total_return_pct": -21.614856206530565,
+       "annualized_pct": -4.798595564031438,
+       "sharpe": 0.07181924174392797,
+       "max_drawdown_pct": -58.66959244229436
+      },
+      "pct_invested": 39.1025641025641
+     }
+    },
+    "p_mean": 0.47051875441609764
+   }
+  },
+  {
+   "symbol": "ADBE",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.46474358974358976,
+    "always_up_accuracy": 0.49759615384615385,
+    "edge_vs_always_up": -0.0328525641025641,
+    "auc": 0.4762345036944579,
+    "brier": 0.31623296168637954,
+    "brier_baserate": 0.24999422152366862,
+    "brier_skill": -0.2649610849362758,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -79.06082414964784,
+       "annualized_pct": -27.073382599851413,
+       "sharpe": -0.8762564147312623,
+       "max_drawdown_pct": -83.42325382884495
+      },
+      "buy_hold": {
+       "total_return_pct": -61.883986732576005,
+       "annualized_pct": -17.696949684795737,
+       "sharpe": -0.3194271304628723,
+       "max_drawdown_pct": -71.90319086624577
+      },
+      "pct_invested": 61.458333333333336
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -72.71666481027599,
+       "annualized_pct": -23.070186579405593,
+       "sharpe": -0.7587867829003583,
+       "max_drawdown_pct": -77.64731495968104
+      },
+      "buy_hold": {
+       "total_return_pct": -61.883986732576005,
+       "annualized_pct": -17.696949684795737,
+       "sharpe": -0.3194271304628723,
+       "max_drawdown_pct": -71.90319086624577
+      },
+      "pct_invested": 54.166666666666664
+     }
+    },
+    "p_mean": 0.5782963180442889
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.483974358974359,
+    "always_up_accuracy": 0.49759615384615385,
+    "edge_vs_always_up": -0.013621794871794879,
+    "auc": 0.4739474583105399,
+    "brier": 0.3091412314095899,
+    "brier_baserate": 0.24999422152366862,
+    "brier_skill": -0.23659350814363278,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -68.9265143493423,
+       "annualized_pct": -21.022783833062032,
+       "sharpe": -0.5885939750249248,
+       "max_drawdown_pct": -77.9006038937848
+      },
+      "buy_hold": {
+       "total_return_pct": -61.883986732576005,
+       "annualized_pct": -17.696949684795737,
+       "sharpe": -0.3194271304628723,
+       "max_drawdown_pct": -71.90319086624577
+      },
+      "pct_invested": 64.34294871794873
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -76.46309613709641,
+       "annualized_pct": -25.33076664914843,
+       "sharpe": -0.852961846637684,
+       "max_drawdown_pct": -81.95653774614627
+      },
+      "buy_hold": {
+       "total_return_pct": -61.883986732576005,
+       "annualized_pct": -17.696949684795737,
+       "sharpe": -0.3194271304628723,
+       "max_drawdown_pct": -71.90319086624577
+      },
+      "pct_invested": 56.730769230769226
+     }
+    },
+    "p_mean": 0.578730736951678
+   }
+  },
+  {
+   "symbol": "BA",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5,
+    "always_up_accuracy": 0.4983974358974359,
+    "edge_vs_always_up": 0.0016025641025640969,
+    "auc": 0.498590037290817,
+    "brier": 0.3069065540366662,
+    "brier_baserate": 0.24999743178829711,
+    "brier_skill": -0.2276388274922796,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -42.51792570665715,
+       "annualized_pct": -10.578068011402408,
+       "sharpe": -0.24063701456233913,
+       "max_drawdown_pct": -69.34010892132918
+      },
+      "buy_hold": {
+       "total_return_pct": -13.319369211303101,
+       "annualized_pct": -2.845027770988273,
+       "sharpe": 0.1057911024329692,
+       "max_drawdown_pct": -50.293876858447796
+      },
+      "pct_invested": 52.56410256410257
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -23.306497563288055,
+       "annualized_pct": -5.217077337514087,
+       "sharpe": -0.05122446452737257,
+       "max_drawdown_pct": -64.4509105426098
+      },
+      "buy_hold": {
+       "total_return_pct": -13.319369211303101,
+       "annualized_pct": -2.845027770988273,
+       "sharpe": 0.1057911024329692,
+       "max_drawdown_pct": -50.293876858447796
+      },
+      "pct_invested": 46.955128205128204
+     }
+    },
+    "p_mean": 0.5250156193923874
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5272435897435898,
+    "always_up_accuracy": 0.4983974358974359,
+    "edge_vs_always_up": 0.028846153846153855,
+    "auc": 0.5222460783004428,
+    "brier": 0.2958182893064297,
+    "brier_baserate": 0.24999743178829711,
+    "brier_skill": -0.18328531293447314,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 23.746327060129246,
+       "annualized_pct": 4.3961325784256156,
+       "sharpe": 0.2931863135970861,
+       "max_drawdown_pct": -52.02288255675841
+      },
+      "buy_hold": {
+       "total_return_pct": -13.319369211303101,
+       "annualized_pct": -2.845027770988273,
+       "sharpe": 0.1057911024329692,
+       "max_drawdown_pct": -50.293876858447796
+      },
+      "pct_invested": 52.243589743589745
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -24.46018247975761,
+       "annualized_pct": -5.506723269657588,
+       "sharpe": -0.0701558189285586,
+       "max_drawdown_pct": -58.81068032587373
+      },
+      "buy_hold": {
+       "total_return_pct": -13.319369211303101,
+       "annualized_pct": -2.845027770988273,
+       "sharpe": 0.1057911024329692,
+       "max_drawdown_pct": -50.293876858447796
+      },
+      "pct_invested": 44.391025641025635
+     }
+    },
+    "p_mean": 0.5113433930479611
+   }
+  },
+  {
+   "symbol": "CAT",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.49038461538461536,
+    "always_up_accuracy": 0.5360576923076923,
+    "edge_vs_always_up": -0.04567307692307693,
+    "auc": 0.48232997978577574,
+    "brier": 0.3160513376780846,
+    "brier_baserate": 0.2486998428254438,
+    "brier_skill": -0.2708143844703317,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 124.29110966581662,
+       "annualized_pct": 17.716421262835546,
+       "sharpe": 0.7889042614138783,
+       "max_drawdown_pct": -29.530631015879607
+      },
+      "buy_hold": {
+       "total_return_pct": 345.1937877873735,
+       "annualized_pct": 35.19387895619634,
+       "sharpe": 1.1053304007027287,
+       "max_drawdown_pct": -34.047152785518975
+      },
+      "pct_invested": 50.080128205128204
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 95.78785061323774,
+       "annualized_pct": 14.529739828170008,
+       "sharpe": 0.7087078156481827,
+       "max_drawdown_pct": -25.910761527970195
+      },
+      "buy_hold": {
+       "total_return_pct": 345.1937877873735,
+       "annualized_pct": 35.19387895619634,
+       "sharpe": 1.1053304007027287,
+       "max_drawdown_pct": -34.047152785518975
+      },
+      "pct_invested": 43.34935897435898
+     }
+    },
+    "p_mean": 0.49852090455869286
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.4831730769230769,
+    "always_up_accuracy": 0.5360576923076923,
+    "edge_vs_always_up": -0.05288461538461536,
+    "auc": 0.4679141140722497,
+    "brier": 0.3150242372151905,
+    "brier_baserate": 0.2486998428254438,
+    "brier_skill": -0.26668450464722704,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 32.094719407033814,
+       "annualized_pct": 5.781461582131597,
+       "sharpe": 0.3495674482659612,
+       "max_drawdown_pct": -45.028071646684594
+      },
+      "buy_hold": {
+       "total_return_pct": 345.1937877873735,
+       "annualized_pct": 35.19387895619634,
+       "sharpe": 1.1053304007027287,
+       "max_drawdown_pct": -34.047152785518975
+      },
+      "pct_invested": 55.12820512820513
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -10.219760442302828,
+       "annualized_pct": -2.153315354402119,
+       "sharpe": 0.026492501128379402,
+       "max_drawdown_pct": -52.05855245002146
+      },
+      "buy_hold": {
+       "total_return_pct": 345.1937877873735,
+       "annualized_pct": 35.19387895619634,
+       "sharpe": 1.1053304007027287,
+       "max_drawdown_pct": -34.047152785518975
+      },
+      "pct_invested": 48.07692307692308
+     }
+    },
+    "p_mean": 0.5189076838373111
+   }
+  },
+  {
+   "symbol": "GE",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.48878205128205127,
+    "always_up_accuracy": 0.5536858974358975,
+    "edge_vs_always_up": -0.0649038461538462,
+    "auc": 0.4699041536866665,
+    "brier": 0.34402076135340537,
+    "brier_baserate": 0.2471178244165023,
+    "brier_skill": -0.3921325269260181,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 138.4027555621567,
+       "annualized_pct": 19.17573876245322,
+       "sharpe": 0.8980518981266036,
+       "max_drawdown_pct": -27.180737257139587
+      },
+      "buy_hold": {
+       "total_return_pct": 377.93018356985783,
+       "annualized_pct": 37.14480519713725,
+       "sharpe": 1.1742540941496504,
+       "max_drawdown_pct": -44.94430240609054
+      },
+      "pct_invested": 48.95833333333333
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 142.19890264446144,
+       "annualized_pct": 19.55650941929892,
+       "sharpe": 0.9386344077250312,
+       "max_drawdown_pct": -23.756101836552045
+      },
+      "buy_hold": {
+       "total_return_pct": 377.93018356985783,
+       "annualized_pct": 37.14480519713725,
+       "sharpe": 1.1742540941496504,
+       "max_drawdown_pct": -44.94430240609054
+      },
+      "pct_invested": 43.669871794871796
+     }
+    },
+    "p_mean": 0.4604299415816338
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.46955128205128205,
+    "always_up_accuracy": 0.5536858974358975,
+    "edge_vs_always_up": -0.08413461538461542,
+    "auc": 0.4746302161413609,
+    "brier": 0.33351634707683747,
+    "brier_baserate": 0.2471178244165023,
+    "brier_skill": -0.3496248110161233,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 5.03254762170835,
+       "annualized_pct": 0.9963752862178321,
+       "sharpe": 0.160500818156542,
+       "max_drawdown_pct": -38.29947102102553
+      },
+      "buy_hold": {
+       "total_return_pct": 377.93018356985783,
+       "annualized_pct": 37.14480519713725,
+       "sharpe": 1.1742540941496504,
+       "max_drawdown_pct": -44.94430240609054
+      },
+      "pct_invested": 46.07371794871795
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 49.51947725811596,
+       "annualized_pct": 8.461476252045852,
+       "sharpe": 0.4796418966857709,
+       "max_drawdown_pct": -37.40772045218843
+      },
+      "buy_hold": {
+       "total_return_pct": 377.93018356985783,
+       "annualized_pct": 37.14480519713725,
+       "sharpe": 1.1742540941496504,
+       "max_drawdown_pct": -44.94430240609054
+      },
+      "pct_invested": 40.705128205128204
+     }
+    },
+    "p_mean": 0.4587292819424198
+   }
+  },
+  {
+   "symbol": "MMM",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.49038461538461536,
+    "always_up_accuracy": 0.49759615384615385,
+    "edge_vs_always_up": -0.007211538461538491,
+    "auc": 0.485523940138738,
+    "brier": 0.3341779999453011,
+    "brier_baserate": 0.24999422152366862,
+    "brier_skill": -0.3367428971299733,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 9.352417913375021,
+       "annualized_pct": 1.8217010207387307,
+       "sharpe": 0.1895624018140258,
+       "max_drawdown_pct": -33.584010419520425
+      },
+      "buy_hold": {
+       "total_return_pct": 26.839617735142273,
+       "annualized_pct": 4.917890999301422,
+       "sharpe": 0.3084580352870827,
+       "max_drawdown_pct": -48.86416814279658
+      },
+      "pct_invested": 49.27884615384615
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -3.647275786754922,
+       "annualized_pct": -0.7474282058380965,
+       "sharpe": 0.03877555758530753,
+       "max_drawdown_pct": -24.512226243769284
+      },
+      "buy_hold": {
+       "total_return_pct": 26.839617735142273,
+       "annualized_pct": 4.917890999301422,
+       "sharpe": 0.3084580352870827,
+       "max_drawdown_pct": -48.86416814279658
+      },
+      "pct_invested": 44.55128205128205
+     }
+    },
+    "p_mean": 0.49896597120991476
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5040064102564102,
+    "always_up_accuracy": 0.49759615384615385,
+    "edge_vs_always_up": 0.0064102564102563875,
+    "auc": 0.5085664681393134,
+    "brier": 0.31304538556345674,
+    "brier_baserate": 0.24999422152366862,
+    "brier_skill": -0.25221048572844174,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -2.207178469869442,
+       "annualized_pct": -0.4496583361566553,
+       "sharpe": 0.07345162735712471,
+       "max_drawdown_pct": -39.89217398093913
+      },
+      "buy_hold": {
+       "total_return_pct": 26.839617735142273,
+       "annualized_pct": 4.917890999301422,
+       "sharpe": 0.3084580352870827,
+       "max_drawdown_pct": -48.86416814279658
+      },
+      "pct_invested": 50.16025641025641
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -10.062574515079959,
+       "annualized_pct": -2.1187483478040225,
+       "sharpe": -0.026017330932906504,
+       "max_drawdown_pct": -39.021603906023195
+      },
+      "buy_hold": {
+       "total_return_pct": 26.839617735142273,
+       "annualized_pct": 4.917890999301422,
+       "sharpe": 0.3084580352870827,
+       "max_drawdown_pct": -48.86416814279658
+      },
+      "pct_invested": 44.31089743589743
+     }
+    },
+    "p_mean": 0.4956842452296629
+   }
+  },
+  {
+   "symbol": "T",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.49599358974358976,
+    "always_up_accuracy": 0.5120192307692307,
+    "edge_vs_always_up": -0.01602564102564097,
+    "auc": 0.4930836616120735,
+    "brier": 0.3137493365481531,
+    "brier_baserate": 0.24985553809171598,
+    "brier_skill": -0.25572296273450323,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -9.014884014283297,
+       "annualized_pct": -1.8895726449465355,
+       "sharpe": -0.005887079506327476,
+       "max_drawdown_pct": -32.14096262838538
+      },
+      "buy_hold": {
+       "total_return_pct": 65.99092376338574,
+       "annualized_pct": 10.774578827436887,
+       "sharpe": 0.5365687041891003,
+       "max_drawdown_pct": -32.00802976527156
+      },
+      "pct_invested": 52.72435897435898
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -20.604903555867395,
+       "annualized_pct": -4.552176049642931,
+       "sharpe": -0.16430749532294922,
+       "max_drawdown_pct": -36.20777577203734
+      },
+      "buy_hold": {
+       "total_return_pct": 65.99092376338574,
+       "annualized_pct": 10.774578827436887,
+       "sharpe": 0.5365687041891003,
+       "max_drawdown_pct": -32.00802976527156
+      },
+      "pct_invested": 46.71474358974359
+     }
+    },
+    "p_mean": 0.5072831594600127
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.483974358974359,
+    "always_up_accuracy": 0.5120192307692307,
+    "edge_vs_always_up": -0.02804487179487175,
+    "auc": 0.47739566389396404,
+    "brier": 0.3150641765958169,
+    "brier_baserate": 0.24985553809171598,
+    "brier_skill": -0.26098536379115367,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -5.039374818900921,
+       "annualized_pct": -1.0386690473072613,
+       "sharpe": 0.03710540143822069,
+       "max_drawdown_pct": -26.478958517697993
+      },
+      "buy_hold": {
+       "total_return_pct": 65.99092376338574,
+       "annualized_pct": 10.774578827436887,
+       "sharpe": 0.5365687041891003,
+       "max_drawdown_pct": -32.00802976527156
+      },
+      "pct_invested": 50.080128205128204
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 7.869760622767208,
+       "annualized_pct": 1.541415137130775,
+       "sharpe": 0.17458301435869905,
+       "max_drawdown_pct": -19.66279747936245
+      },
+      "buy_hold": {
+       "total_return_pct": 65.99092376338574,
+       "annualized_pct": 10.774578827436887,
+       "sharpe": 0.5365687041891003,
+       "max_drawdown_pct": -32.00802976527156
+      },
+      "pct_invested": 42.30769230769231
+     }
+    },
+    "p_mean": 0.49978722549097326
+   }
+  },
+  {
+   "symbol": "VZ",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.49599358974358976,
+    "always_up_accuracy": 0.5040064102564102,
+    "edge_vs_always_up": -0.008012820512820484,
+    "auc": 0.48770389699782457,
+    "brier": 0.32657805537729,
+    "brier_baserate": 0.2499839486768574,
+    "brier_skill": -0.30639609905291265,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -28.34445536171736,
+       "annualized_pct": -6.50861479636895,
+       "sharpe": -0.3692963233879922,
+       "max_drawdown_pct": -43.24922583014234
+      },
+      "buy_hold": {
+       "total_return_pct": 18.58913192942857,
+       "annualized_pct": 3.502626825569033,
+       "sharpe": 0.26522561618206814,
+       "max_drawdown_pct": -38.37721566407275
+      },
+      "pct_invested": 52.243589743589745
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -28.8258715748124,
+       "annualized_pct": -6.635788088667072,
+       "sharpe": -0.41004842791213897,
+       "max_drawdown_pct": -42.91790617921368
+      },
+      "buy_hold": {
+       "total_return_pct": 18.58913192942857,
+       "annualized_pct": 3.502626825569033,
+       "sharpe": 0.26522561618206814,
+       "max_drawdown_pct": -38.37721566407275
+      },
+      "pct_invested": 46.31410256410257
+     }
+    },
+    "p_mean": 0.5037452871553026
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.48717948717948717,
+    "always_up_accuracy": 0.5040064102564102,
+    "edge_vs_always_up": -0.016826923076923073,
+    "auc": 0.4936779409838423,
+    "brier": 0.31388661017778,
+    "brier_baserate": 0.2499839486768574,
+    "brier_skill": -0.25562705861377766,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -34.130361250951466,
+       "annualized_pct": -8.084580388646778,
+       "sharpe": -0.46453717052231946,
+       "max_drawdown_pct": -40.57556661498008
+      },
+      "buy_hold": {
+       "total_return_pct": 18.58913192942857,
+       "annualized_pct": 3.502626825569033,
+       "sharpe": 0.26522561618206814,
+       "max_drawdown_pct": -38.37721566407275
+      },
+      "pct_invested": 52.644230769230774
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -26.985320453327088,
+       "annualized_pct": -6.153222605221787,
+       "sharpe": -0.3449116531058823,
+       "max_drawdown_pct": -35.11307171574433
+      },
+      "buy_hold": {
+       "total_return_pct": 18.58913192942857,
+       "annualized_pct": 3.502626825569033,
+       "sharpe": 0.26522561618206814,
+       "max_drawdown_pct": -38.37721566407275
+      },
+      "pct_invested": 46.71474358974359
+     }
+    },
+    "p_mean": 0.5220991753016372
+   }
+  },
+  {
+   "symbol": "MRK",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.5104166666666666,
+    "always_up_accuracy": 0.5248397435897436,
+    "edge_vs_always_up": -0.014423076923076983,
+    "auc": 0.4886654737844831,
+    "brier": 0.3171628983598548,
+    "brier_baserate": 0.24938298713839585,
+    "brier_skill": -0.27179043766864597,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 35.34116593459502,
+       "annualized_pct": 6.301338385637978,
+       "sharpe": 0.5230551722688617,
+       "max_drawdown_pct": -26.336085498017674
+      },
+      "buy_hold": {
+       "total_return_pct": 112.20255272049431,
+       "annualized_pct": 16.406836618817767,
+       "sharpe": 0.7384878268351446,
+       "max_drawdown_pct": -43.44338884134292
+      },
+      "pct_invested": 34.93589743589743
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 18.446196810184645,
+       "annualized_pct": 3.477424514676053,
+       "sharpe": 0.3376461234877305,
+       "max_drawdown_pct": -23.028404947972682
+      },
+      "buy_hold": {
+       "total_return_pct": 112.20255272049431,
+       "annualized_pct": 16.406836618817767,
+       "sharpe": 0.7384878268351446,
+       "max_drawdown_pct": -43.44338884134292
+      },
+      "pct_invested": 29.967948717948715
+     }
+    },
+    "p_mean": 0.4080328581457695
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.48157051282051283,
+    "always_up_accuracy": 0.5248397435897436,
+    "edge_vs_always_up": -0.04326923076923078,
+    "auc": 0.49062729297272245,
+    "brier": 0.30761283878167345,
+    "brier_baserate": 0.24938298713839585,
+    "brier_skill": -0.2334956859385231,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 5.26408761684749,
+       "annualized_pct": 1.0412924334936902,
+       "sharpe": 0.14475380238804628,
+       "max_drawdown_pct": -34.450369815257226
+      },
+      "buy_hold": {
+       "total_return_pct": 112.20255272049431,
+       "annualized_pct": 16.406836618817767,
+       "sharpe": 0.7384878268351446,
+       "max_drawdown_pct": -43.44338884134292
+      },
+      "pct_invested": 41.18589743589743
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 31.478281224952376,
+       "annualized_pct": 5.681597380241743,
+       "sharpe": 0.46802418110480193,
+       "max_drawdown_pct": -28.67487120785293
+      },
+      "buy_hold": {
+       "total_return_pct": 112.20255272049431,
+       "annualized_pct": 16.406836618817767,
+       "sharpe": 0.7384878268351446,
+       "max_drawdown_pct": -43.44338884134292
+      },
+      "pct_invested": 33.33333333333333
+     }
+    },
+    "p_mean": 0.4461284004038391
+   }
+  },
+  {
+   "symbol": "ABBV",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.49439102564102566,
+    "always_up_accuracy": 0.5384615384615384,
+    "edge_vs_always_up": -0.044070512820512775,
+    "auc": 0.5263000165343916,
+    "brier": 0.3143648876632577,
+    "brier_baserate": 0.24852071005917162,
+    "brier_skill": -0.26494442893072745,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 47.157196544981296,
+       "annualized_pct": 8.113258703169945,
+       "sharpe": 0.6750997194297113,
+       "max_drawdown_pct": -14.850819174478099
+      },
+      "buy_hold": {
+       "total_return_pct": 194.32684922216268,
+       "annualized_pct": 24.356237086520615,
+       "sharpe": 1.0509400800733721,
+       "max_drawdown_pct": -21.915450466249002
+      },
+      "pct_invested": 36.77884615384615
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 39.639251839843624,
+       "annualized_pct": 6.974524138036076,
+       "sharpe": 0.6181213855341671,
+       "max_drawdown_pct": -18.821986761653413
+      },
+      "buy_hold": {
+       "total_return_pct": 194.32684922216268,
+       "annualized_pct": 24.356237086520615,
+       "sharpe": 1.0509400800733721,
+       "max_drawdown_pct": -21.915450466249002
+      },
+      "pct_invested": 32.131410256410255
+     }
+    },
+    "p_mean": 0.4164054449199914
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.5032051282051282,
+    "always_up_accuracy": 0.5384615384615384,
+    "edge_vs_always_up": -0.03525641025641024,
+    "auc": 0.5138191344246031,
+    "brier": 0.3033949541485736,
+    "brier_baserate": 0.24852071005917162,
+    "brier_skill": -0.22080350597878406,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 10.816691387949184,
+       "annualized_pct": 2.095550472726093,
+       "sharpe": 0.21334057583193394,
+       "max_drawdown_pct": -40.96763964778599
+      },
+      "buy_hold": {
+       "total_return_pct": 194.32684922216268,
+       "annualized_pct": 24.356237086520615,
+       "sharpe": 1.0509400800733721,
+       "max_drawdown_pct": -21.915450466249002
+      },
+      "pct_invested": 40.705128205128204
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 6.940777140483223,
+       "annualized_pct": 1.364226819156289,
+       "sharpe": 0.16951239075665056,
+       "max_drawdown_pct": -34.174232582783326
+      },
+      "buy_hold": {
+       "total_return_pct": 194.32684922216268,
+       "annualized_pct": 24.356237086520615,
+       "sharpe": 1.0509400800733721,
+       "max_drawdown_pct": -21.915450466249002
+      },
+      "pct_invested": 33.65384615384615
+     }
+    },
+    "p_mean": 0.44834298011996093
+   }
+  },
+  {
+   "symbol": "NEE",
+   "rows": 1998,
+   "price": {
+    "n_test_days": 1248,
+    "accuracy": 0.484775641025641,
+    "always_up_accuracy": 0.5152243589743589,
+    "edge_vs_always_up": -0.030448717948717896,
+    "auc": 0.4801305862241816,
+    "brier": 0.3262980592445656,
+    "brier_baserate": 0.24976821889381987,
+    "brier_skill": -0.30640343551186433,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -31.41708769706213,
+       "annualized_pct": -7.332336016540042,
+       "sharpe": -0.29225658082226186,
+       "max_drawdown_pct": -49.35257780029793
+      },
+      "buy_hold": {
+       "total_return_pct": 7.816914729637592,
+       "annualized_pct": 1.5313683867619998,
+       "sharpe": 0.19155053949200504,
+       "max_drawdown_pct": -44.96971648998841
+      },
+      "pct_invested": 48.717948717948715
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -0.7673195561614943,
+       "annualized_pct": -0.15541612870848542,
+       "sharpe": 0.08007436903707384,
+       "max_drawdown_pct": -33.357988226876095
+      },
+      "buy_hold": {
+       "total_return_pct": 7.816914729637592,
+       "annualized_pct": 1.5313683867619998,
+       "sharpe": 0.19155053949200504,
+       "max_drawdown_pct": -44.96971648998841
+      },
+      "pct_invested": 41.907051282051285
+     }
+    },
+    "p_mean": 0.4769984581746543
+   },
+   "price+market": {
+    "n_test_days": 1248,
+    "accuracy": 0.49278846153846156,
+    "always_up_accuracy": 0.5152243589743589,
+    "edge_vs_always_up": -0.022435897435897356,
+    "auc": 0.4805984345076668,
+    "brier": 0.3139917180690154,
+    "brier_baserate": 0.24976821889381987,
+    "brier_skill": -0.25713239042032754,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -3.5281083262715507,
+       "annualized_pct": -0.7226535755820218,
+       "sharpe": 0.05741242836618488,
+       "max_drawdown_pct": -36.52084463330787
+      },
+      "buy_hold": {
+       "total_return_pct": 7.816914729637592,
+       "annualized_pct": 1.5313683867619998,
+       "sharpe": 0.19155053949200504,
+       "max_drawdown_pct": -44.96971648998841
+      },
+      "pct_invested": 49.19871794871795
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -1.6990015845334772,
+       "annualized_pct": -0.3454174828128376,
+       "sharpe": 0.07331352074782321,
+       "max_drawdown_pct": -39.04802129021292
+      },
+      "buy_hold": {
+       "total_return_pct": 7.816914729637592,
+       "annualized_pct": 1.5313683867619998,
+       "sharpe": 0.19155053949200504,
+       "max_drawdown_pct": -44.96971648998841
+      },
+      "pct_invested": 44.31089743589743
+     }
+    },
+    "p_mean": 0.49375127624714366
+   }
+  },
+  {
+   "symbol": "RELIANCE.NS",
+   "rows": 1965,
+   "price": {
+    "n_test_days": 1215,
+    "accuracy": 0.5094650205761316,
+    "always_up_accuracy": 0.502880658436214,
+    "edge_vs_always_up": 0.006584362139917643,
+    "auc": 0.508120982863832,
+    "brier": 0.30518664238619975,
+    "brier_baserate": 0.24999170180697386,
+    "brier_skill": -0.22078709085249382,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 9.8261826269894,
+       "annualized_pct": 1.9630229652154663,
+       "sharpe": 0.20098512609246913,
+       "max_drawdown_pct": -20.45509966715965
+      },
+      "buy_hold": {
+       "total_return_pct": 3.334526571694818,
+       "annualized_pct": 0.682644181340808,
+       "sharpe": 0.14195479321419557,
+       "max_drawdown_pct": -27.17575121316002
+      },
+      "pct_invested": 46.666666666666664
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -19.813360354113062,
+       "annualized_pct": -4.476539450198736,
+       "sharpe": -0.23327710136922822,
+       "max_drawdown_pct": -25.66832587166548
+      },
+      "buy_hold": {
+       "total_return_pct": 3.334526571694818,
+       "annualized_pct": 0.682644181340808,
+       "sharpe": 0.14195479321419557,
+       "max_drawdown_pct": -27.17575121316002
+      },
+      "pct_invested": 39.58847736625514
+     }
+    },
+    "p_mean": 0.47515183490060975
+   },
+   "price+market": {
+    "n_test_days": 1215,
+    "accuracy": 0.5176954732510288,
+    "always_up_accuracy": 0.502880658436214,
+    "edge_vs_always_up": 0.014814814814814836,
+    "auc": 0.5228753210999231,
+    "brier": 0.29642019152594773,
+    "brier_baserate": 0.24999170180697386,
+    "brier_skill": -0.18572012344162814,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 16.125713755790837,
+       "annualized_pct": 3.1493820076964107,
+       "sharpe": 0.2765860927416497,
+       "max_drawdown_pct": -23.307647863903117
+      },
+      "buy_hold": {
+       "total_return_pct": 3.334526571694818,
+       "annualized_pct": 0.682644181340808,
+       "sharpe": 0.14195479321419557,
+       "max_drawdown_pct": -27.17575121316002
+      },
+      "pct_invested": 46.33744855967078
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 38.88187049431091,
+       "annualized_pct": 7.049771634596791,
+       "sharpe": 0.5479789746927696,
+       "max_drawdown_pct": -22.041626689322346
+      },
+      "buy_hold": {
+       "total_return_pct": 3.334526571694818,
+       "annualized_pct": 0.682644181340808,
+       "sharpe": 0.14195479321419557,
+       "max_drawdown_pct": -27.17575121316002
+      },
+      "pct_invested": 38.68312757201646
+     }
+    },
+    "p_mean": 0.46789007970733654
+   }
+  },
+  {
+   "symbol": "TCS.NS",
+   "rows": 1965,
+   "price": {
+    "n_test_days": 1215,
+    "accuracy": 0.4962962962962963,
+    "always_up_accuracy": 0.4773662551440329,
+    "edge_vs_always_up": 0.018930041152263377,
+    "auc": 0.5121965788759164,
+    "brier": 0.3031602891614636,
+    "brier_baserate": 0.2494877135937949,
+    "brier_skill": -0.21513113729943445,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -38.61471012575547,
+       "annualized_pct": -9.62611166190439,
+       "sharpe": -0.46877386682448935,
+       "max_drawdown_pct": -52.92004234228668
+      },
+      "buy_hold": {
+       "total_return_pct": -32.801691010189096,
+       "annualized_pct": -7.914162598274976,
+       "sharpe": -0.25353156722824954,
+       "max_drawdown_pct": -53.39342417380909
+      },
+      "pct_invested": 62.880658436213984
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -41.03230956091789,
+       "annualized_pct": -10.376134960650818,
+       "sharpe": -0.5612519517018278,
+       "max_drawdown_pct": -54.46161535564842
+      },
+      "buy_hold": {
+       "total_return_pct": -32.801691010189096,
+       "annualized_pct": -7.914162598274976,
+       "sharpe": -0.25353156722824954,
+       "max_drawdown_pct": -53.39342417380909
+      },
+      "pct_invested": 55.55555555555556
+     }
+    },
+    "p_mean": 0.5705855602835431
+   },
+   "price+market": {
+    "n_test_days": 1215,
+    "accuracy": 0.49218106995884775,
+    "always_up_accuracy": 0.4773662551440329,
+    "edge_vs_always_up": 0.014814814814814836,
+    "auc": 0.48708932935107246,
+    "brier": 0.3061498246266006,
+    "brier_baserate": 0.2494877135937949,
+    "brier_skill": -0.22711383344937186,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -43.33709397563086,
+       "annualized_pct": -11.114206695554675,
+       "sharpe": -0.5942415485201196,
+       "max_drawdown_pct": -53.60020854534279
+      },
+      "buy_hold": {
+       "total_return_pct": -32.801691010189096,
+       "annualized_pct": -7.914162598274976,
+       "sharpe": -0.25353156722824954,
+       "max_drawdown_pct": -53.39342417380909
+      },
+      "pct_invested": 59.01234567901235
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -44.95662995609897,
+       "annualized_pct": -11.647203613952106,
+       "sharpe": -0.6719525071094533,
+       "max_drawdown_pct": -53.55884516410136
+      },
+      "buy_hold": {
+       "total_return_pct": -32.801691010189096,
+       "annualized_pct": -7.914162598274976,
+       "sharpe": -0.25353156722824954,
+       "max_drawdown_pct": -53.39342417380909
+      },
+      "pct_invested": 51.769547325102884
+     }
+    },
+    "p_mean": 0.5495553960694084
+   }
+  },
+  {
+   "symbol": "INFY.NS",
+   "rows": 1965,
+   "price": {
+    "n_test_days": 1215,
+    "accuracy": 0.4773662551440329,
+    "always_up_accuracy": 0.48641975308641977,
+    "edge_vs_always_up": -0.009053497942386857,
+    "auc": 0.4792561499414291,
+    "brier": 0.3072611705492133,
+    "brier_baserate": 0.24981557689376616,
+    "brier_skill": -0.22995200847654051,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -58.403242473470684,
+       "annualized_pct": -16.63377923821271,
+       "sharpe": -0.8366872394932585,
+       "max_drawdown_pct": -62.12491672565146
+      },
+      "buy_hold": {
+       "total_return_pct": -36.89249474112236,
+       "annualized_pct": -9.10597801057358,
+       "sharpe": -0.23614213340116202,
+       "max_drawdown_pct": -48.1716449512771
+      },
+      "pct_invested": 57.77777777777777
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -65.95221382471846,
+       "annualized_pct": -20.02545692619444,
+       "sharpe": -1.126432566974764,
+       "max_drawdown_pct": -68.81938792972093
+      },
+      "buy_hold": {
+       "total_return_pct": -36.89249474112236,
+       "annualized_pct": -9.10597801057358,
+       "sharpe": -0.23614213340116202,
+       "max_drawdown_pct": -48.1716449512771
+      },
+      "pct_invested": 50.37037037037037
+     }
+    },
+    "p_mean": 0.5361455643342601
+   },
+   "price+market": {
+    "n_test_days": 1215,
+    "accuracy": 0.49382716049382713,
+    "always_up_accuracy": 0.48641975308641977,
+    "edge_vs_always_up": 0.007407407407407363,
+    "auc": 0.48815295674432724,
+    "brier": 0.3031621872791176,
+    "brier_baserate": 0.24981557689376616,
+    "brier_skill": -0.21354397131143288,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -47.946230821260826,
+       "annualized_pct": -12.664646552383063,
+       "sharpe": -0.601882327644084,
+       "max_drawdown_pct": -50.890607354851916
+      },
+      "buy_hold": {
+       "total_return_pct": -36.89249474112236,
+       "annualized_pct": -9.10597801057358,
+       "sharpe": -0.23614213340116202,
+       "max_drawdown_pct": -48.1716449512771
+      },
+      "pct_invested": 53.16872427983539
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -36.28796516323499,
+       "annualized_pct": -8.926068674110443,
+       "sharpe": -0.4645867050685538,
+       "max_drawdown_pct": -39.679218773519125
+      },
+      "buy_hold": {
+       "total_return_pct": -36.89249474112236,
+       "annualized_pct": -9.10597801057358,
+       "sharpe": -0.23614213340116202,
+       "max_drawdown_pct": -48.1716449512771
+      },
+      "pct_invested": 44.77366255144033
+     }
+    },
+    "p_mean": 0.5115901642697461
+   }
+  },
+  {
+   "symbol": "HDFCBANK.NS",
+   "rows": 1965,
+   "price": {
+    "n_test_days": 1215,
+    "accuracy": 0.49382716049382713,
+    "always_up_accuracy": 0.502880658436214,
+    "edge_vs_always_up": -0.009053497942386857,
+    "auc": 0.49863972859604816,
+    "brier": 0.3079223931469204,
+    "brier_baserate": 0.24999170180697383,
+    "brier_skill": -0.23173045713603968,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -33.633890051955895,
+       "annualized_pct": -8.151861968430552,
+       "sharpe": -0.5288389345638382,
+       "max_drawdown_pct": -33.419559826737114
+      },
+      "buy_hold": {
+       "total_return_pct": -3.649590520588475,
+       "annualized_pct": -0.7681450548223223,
+       "sharpe": 0.06866008170129846,
+       "max_drawdown_pct": -31.04312301696349
+      },
+      "pct_invested": 50.20576131687243
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -35.96377653684696,
+       "annualized_pct": -8.83014613445452,
+       "sharpe": -0.6230569362737258,
+       "max_drawdown_pct": -35.756970710684136
+      },
+      "buy_hold": {
+       "total_return_pct": -3.649590520588475,
+       "annualized_pct": -0.7681450548223223,
+       "sharpe": 0.06866008170129846,
+       "max_drawdown_pct": -31.04312301696349
+      },
+      "pct_invested": 42.5514403292181
+     }
+    },
+    "p_mean": 0.489030821752493
+   },
+   "price+market": {
+    "n_test_days": 1215,
+    "accuracy": 0.5004115226337449,
+    "always_up_accuracy": 0.502880658436214,
+    "edge_vs_always_up": -0.0024691358024691024,
+    "auc": 0.5035253248935085,
+    "brier": 0.302736878325339,
+    "brier_baserate": 0.24999170180697383,
+    "brier_skill": -0.21098770934041378,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -31.06783289374735,
+       "annualized_pct": -7.426323483502739,
+       "sharpe": -0.4173184333124799,
+       "max_drawdown_pct": -33.812628647930744
+      },
+      "buy_hold": {
+       "total_return_pct": -3.649590520588475,
+       "annualized_pct": -0.7681450548223223,
+       "sharpe": 0.06866008170129846,
+       "max_drawdown_pct": -31.04312301696349
+      },
+      "pct_invested": 50.699588477366255
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -31.48314049990336,
+       "annualized_pct": -7.542281070207868,
+       "sharpe": -0.5142912340381963,
+       "max_drawdown_pct": -32.39300975956046
+      },
+      "buy_hold": {
+       "total_return_pct": -3.649590520588475,
+       "annualized_pct": -0.7681450548223223,
+       "sharpe": 0.06866008170129846,
+       "max_drawdown_pct": -31.04312301696349
+      },
+      "pct_invested": 44.69135802469136
+     }
+    },
+    "p_mean": 0.49854308919896806
+   }
+  },
+  {
+   "symbol": "ICICIBANK.NS",
+   "rows": 1965,
+   "price": {
+    "n_test_days": 1215,
+    "accuracy": 0.49465020576131685,
+    "always_up_accuracy": 0.5135802469135803,
+    "edge_vs_always_up": -0.018930041152263433,
+    "auc": 0.4830578333116404,
+    "brier": 0.3283600248397963,
+    "brier_baserate": 0.24981557689376616,
+    "brier_skill": -0.3144097294598691,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": 18.00362349769187,
+       "annualized_pct": 3.4931550202859762,
+       "sharpe": 0.32537469147453707,
+       "max_drawdown_pct": -20.21041005218997
+      },
+      "buy_hold": {
+       "total_return_pct": 82.31295293795584,
+       "annualized_pct": 13.264936737630006,
+       "sharpe": 0.7361697741902925,
+       "max_drawdown_pct": -20.728755841633827
+      },
+      "pct_invested": 44.77366255144033
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": 23.65262397702903,
+       "annualized_pct": 4.5017720826290075,
+       "sharpe": 0.43640952859304577,
+       "max_drawdown_pct": -21.498075860465253
+      },
+      "buy_hold": {
+       "total_return_pct": 82.31295293795584,
+       "annualized_pct": 13.264936737630006,
+       "sharpe": 0.7361697741902925,
+       "max_drawdown_pct": -20.728755841633827
+      },
+      "pct_invested": 39.01234567901234
+     }
+    },
+    "p_mean": 0.45075183079842435
+   },
+   "price+market": {
+    "n_test_days": 1215,
+    "accuracy": 0.4674897119341564,
+    "always_up_accuracy": 0.5135802469135803,
+    "edge_vs_always_up": -0.04609053497942389,
+    "auc": 0.4646242787105731,
+    "brier": 0.3281279380183667,
+    "brier_baserate": 0.24981557689376616,
+    "brier_skill": -0.31348069683381996,
+    "sim": {
+     "0.5": {
+      "strategy": {
+       "total_return_pct": -12.91645738834819,
+       "annualized_pct": -2.827740843715165,
+       "sharpe": -0.16997990313265104,
+       "max_drawdown_pct": -23.350028258535687
+      },
+      "buy_hold": {
+       "total_return_pct": 82.31295293795584,
+       "annualized_pct": 13.264936737630006,
+       "sharpe": 0.7361697741902925,
+       "max_drawdown_pct": -20.728755841633827
+      },
+      "pct_invested": 43.20987654320987
+     },
+     "0.55": {
+      "strategy": {
+       "total_return_pct": -19.050914130879313,
+       "annualized_pct": -4.28886238183368,
+       "sharpe": -0.31243729344572585,
+       "max_drawdown_pct": -30.844060982624637
+      },
+      "buy_hold": {
+       "total_return_pct": 82.31295293795584,
+       "annualized_pct": 13.264936737630006,
+       "sharpe": 0.7361697741902925,
+       "max_drawdown_pct": -20.728755841633827
+      },
+      "pct_invested": 37.77777777777778
+     }
+    },
+    "p_mean": 0.452806730681854
+   }
+  }
+ ]
+}

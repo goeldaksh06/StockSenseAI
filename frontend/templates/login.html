@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Sign in{% endblock %}
+{% block content %}
+<div class="authbox">
+  <div class="seg" id="mode" role="group" aria-label="Sign in or create account"></div>
+  <h2 id="heading" style="margin-top:22px">Sign in</h2>
+  <form id="form" novalidate>
+    <label class="field">Email<input type="email" name="email" autocomplete="email" required></label>
+    <label class="field">Password<input type="password" name="password" autocomplete="current-password" required minlength="8"><span id="hint" class="muted" hidden>At least 8 characters.</span></label>
+    <div id="msg" class="state err" style="padding:0" role="alert"></div>
+    <button class="btn" type="submit" id="submit">Sign in</button>
+  </form>
+</div>
+{% endblock %}
+{% block scripts %}
+<script type="module" src="/static/js/pages/login.js"></script>
+{% endblock %}

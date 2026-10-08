@@ -1,11 +1,14 @@
-"""Live next-day prediction for a single symbol, using the direction-target
-XGBoost classifier (the variant that actually showed a competitive
-risk-adjusted backtest — see ml/pipeline.py and ml/backtest.py) plus the
-return-target regressor for a price estimate.
+"""Live next-day prediction for a single symbol: an XGBoost direction
+classifier plus a return-target regressor for a price estimate.
 
-Trains on all available history each call. For a class project this is
-acceptable; for real deployment you'd cache/retrain on a schedule instead.
+Note: these models have not shown a reliable edge over naive baselines (see
+ml/pipeline.py compare_models and ml/backtest.py). Treat output as illustrative.
+
+Trains on all available history on a cache miss; results are cached briefly
+per symbol so a page load that asks for both /ml/predict and /briefing does
+not train twice.
 """
+import time
 from datetime import datetime
 
 import numpy as np
@@ -61,8 +64,21 @@ def _latest_feature_row(symbol: str, start: str = "2018-01-01") -> pd.Series:
     return data.iloc[-1]
 
 
+_CACHE_TTL_S = 600
+_cache: dict[str, tuple[float, dict]] = {}
+
+
 def predict_next_day(symbol: str) -> dict:
     symbol = symbol.upper()
+    hit = _cache.get(symbol)
+    if hit and time.monotonic() - hit[0] < _CACHE_TTL_S:
+        return hit[1]
+    result = _predict_next_day_uncached(symbol)
+    _cache[symbol] = (time.monotonic(), result)
+    return result
+
+
+def _predict_next_day_uncached(symbol: str) -> dict:
     train_df = load_features(symbol)
     if len(train_df) < 50:
         raise ValueError(f"Not enough historical data for {symbol} to train a model")

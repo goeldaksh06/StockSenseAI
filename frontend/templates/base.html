@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}StockSense{% endblock %} | StockSense</title>
+  <meta name="description" content="Research any listed stock: financials, valuation, risk, analyst views, and an honest test of whether forecasting works.">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/static/css/tokens.css">
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/components.css">
+  {% block head %}{% endblock %}
+  <script>try{var t=JSON.parse(localStorage.getItem('theme'));document.documentElement.dataset.theme=t||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+</head>
+<body data-symbol="{{ symbol or '' }}">
+  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="/" aria-label="StockSense home">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--accent)"/><path d="M7 21l6-7 5 4 7-9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        StockSense
+      </a>
+      <nav class="nav" id="mainNav" aria-label="Main">
+        {% set lab = ['analyze', 'models', 'backtest'] %}
+        {% for href, key, label in [('/stock','stock','Research'),('/compare','compare','Compare'),('/analyze','lab','Forecast lab'),('/evidence','evidence','Evidence'),('/watchlist','watchlist','Watchlist'),('/method','method','Method')] %}
+        <a href="{{ href }}"{% if active == key or (key == 'lab' and active in lab) %} aria-current="page"{% endif %}>{{ label }}</a>
+        {% endfor %}
+      </nav>
+      <div class="side" id="navSide"></div>
+      <button class="btn ghost small menu-btn" id="menuBtn" type="button" aria-controls="mainNav" aria-expanded="false">Menu</button>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+    {% block content %}{% endblock %}
+    </div>
+    {% block fullwidth %}{% endblock %}
+  </main>
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="brand" href="/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="var(--accent)"/><path d="M7 21l6-7 5 4 7-9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>StockSense</a>
+          <p style="margin-top:14px;max-width:34ch">Stock research with the assumptions showing, and an honest test of forecasting.</p>
+        </div>
+        <div><h4>Research</h4><a href="/stock/AAPL">Overview</a><a href="/stock/AAPL?tab=financials">Financials</a><a href="/stock/AAPL?tab=valuation">Valuation</a><a href="/stock/AAPL?tab=risk">Risk</a></div>
+        <div><h4>Tools</h4><a href="/compare">Compare</a><a href="/evidence">Evidence</a><a href="/analyze">Forecast lab</a><a href="/watchlist">Watchlist</a></div>
+        <div><h4>About</h4><a href="/method">Method</a><a href="/docs">API docs</a><a href="/login">Sign in</a></div>
+      </div>
+      <p style="max-width:90ch">Educational project, not financial advice or an offer to buy or sell. Market data comes from Yahoo Finance and may be delayed or incomplete. Forecasts are model output and have not been shown to beat simple baselines; see <a href="/evidence">Evidence</a>.</p>
+    </div>
+  </footer>
+  <script type="module">
+    import { initNav } from '/static/js/components/nav.js';
+    import { initCopilot } from '/static/js/components/copilot.js';
+    initNav();
+    initCopilot();
+    const btn = document.getElementById('menuBtn'), nav = document.getElementById('mainNav');
+    btn.addEventListener('click', () => { const open = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', String(open)); });
+  </script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

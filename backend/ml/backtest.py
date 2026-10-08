@@ -166,6 +166,12 @@ def run_backtest(
             "end": str(test_df.index[-1].date()),
             "n_days": n_days,
         },
+        "curve": {
+            "dates": [str(d.date()) for d in test_df.index],
+            "strategy": [round(float(v), 2) for v in strategy_equity],
+            "buy_and_hold": [round(float(v), 2) for v in buy_and_hold_equity],
+            "in_market": [bool(v) for v in predicted_up],
+        },
         "strategy": _summarize(strategy_equity, n_days, predicted_up),
         "buy_and_hold": _summarize(buy_and_hold_equity, n_days, buy_and_hold_signal),
     }

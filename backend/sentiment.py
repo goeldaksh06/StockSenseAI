@@ -4,6 +4,7 @@ Previously this project scored sentiment two different, inconsistent ways
 (VADER in main.py, TextBlob in ml_router.py). This module replaces both.
 """
 import os
+from urllib.parse import quote_plus
 from datetime import datetime, timedelta, timezone
 
 import requests
@@ -29,7 +30,7 @@ def label_for_score(score: float) -> str:
     return "Neutral"
 
 
-def fetch_headlines(symbol: str, as_of: datetime | None = None, lookback_days: int = 7, max_articles: int = 25) -> list[dict]:
+def fetch_headlines(symbol: str, as_of: datetime | None = None, lookback_days: int = 7, max_articles: int = 25, query: str | None = None) -> list[dict]:
     """Fetch recent headlines for `symbol` from NewsAPI.
 
     `as_of` bounds the query to articles published on or before that date,
@@ -46,7 +47,7 @@ def fetch_headlines(symbol: str, as_of: datetime | None = None, lookback_days: i
 
     url = (
         "https://newsapi.org/v2/everything"
-        f"?q={symbol}&from={from_date}&to={to_date}"
+        f"?q={quote_plus(query or symbol)}&from={from_date}&to={to_date}"
         f"&language=en&sortBy=publishedAt&pageSize={max_articles}&apiKey={api_key}"
     )
     try:
@@ -57,13 +58,13 @@ def fetch_headlines(symbol: str, as_of: datetime | None = None, lookback_days: i
         return []
 
     return [
-        {"title": a.get("title", ""), "published_at": a.get("publishedAt"), "source": (a.get("source") or {}).get("name")}
+        {"title": a.get("title", ""), "published_at": a.get("publishedAt"), "source": (a.get("source") or {}).get("name"), "url": a.get("url")}
         for a in articles
         if a.get("title")
     ]
 
 
-def aggregate_sentiment(symbol: str, headline: str | None = None, as_of: datetime | None = None) -> dict:
+def aggregate_sentiment(symbol: str, headline: str | None = None, as_of: datetime | None = None, query: str | None = None) -> dict:
     """Aggregate sentiment across recent headlines (plus an optional explicit
     headline) into an overall score and a positive/neutral/negative breakdown.
     """
@@ -72,7 +73,8 @@ def aggregate_sentiment(symbol: str, headline: str | None = None, as_of: datetim
     if headline:
         scored.append({"title": headline, "score": score_text(headline)})
 
-    for article in fetch_headlines(symbol, as_of=as_of):
+    extra = {"query": query} if query else {}
+    for article in fetch_headlines(symbol, as_of=as_of, **extra):
         scored.append({"title": article["title"], "score": score_text(article["title"])})
 
     if not scored:

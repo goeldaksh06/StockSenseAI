@@ -1,5 +1,6 @@
 from fastapi import APIRouter, HTTPException
 
+from backend.ml.pipeline import SymbolNotFoundError
 from backend.ml.predict import predict_next_day
 from backend.sentiment import aggregate_sentiment
 from backend.llm_briefing import generate_briefing
@@ -17,6 +18,8 @@ def get_briefing(symbol: str, headline: str | None = None):
     symbol = symbol.upper()
     try:
         prediction = predict_next_day(symbol)
+    except SymbolNotFoundError as e:
+        raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Prediction failed: {e}")
 

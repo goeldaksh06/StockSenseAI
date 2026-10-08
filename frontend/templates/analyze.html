@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Analyze{% endblock %}
+{% block content %}
+<div class="labnav seg" role="navigation" aria-label="Forecast lab" style="margin:22px 0 4px">
+  <a href="/analyze" aria-current="page">Analyze</a><a href="/models" >Models</a><a href="/backtest" >Backtest</a>
+</div>
+<div class="banner" style="margin:12px 0">Experimental. Tested across 45 stocks, the forecast model has not beaten simply assuming "up". See <a href="/evidence">Evidence</a>.</div>
+<div id="bar"></div>
+<div id="out"><p class="state">Enter a ticker to see its price history, next-day forecast, news sentiment and plain-English briefing.</p></div>
+{% endblock %}
+{% block scripts %}
+<script type="module" src="/static/js/pages/analyze.js"></script>
+{% endblock %}

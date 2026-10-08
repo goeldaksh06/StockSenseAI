@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+{% block title %}Research any stock with the assumptions showing{% endblock %}
+{% block head %}<link rel="stylesheet" href="/static/css/home.css">{% endblock %}
+{% block content %}
+<section class="hero2">
+  <span class="eyebrow">Stock research, minus the guesswork</span>
+  <h1>Research any stock. See every assumption.</h1>
+  <p class="lede" style="margin:0 auto">Financials, valuation, risk and analyst views for any listed company, in one place. With an honest test of whether forecasting actually works.</p>
+  <div class="search-row">
+    <div id="homeSearch"></div>
+    <a class="btn ghost large" href="/stock/AAPL">Try the AAPL demo</a>
+  </div>
+  <div class="try"><span>Popular:</span><span class="chips" id="quick"></span></div>
+
+  <div class="frame" id="frame">
+    <div class="app" aria-label="Example company page">
+      <div class="app-top">
+        <div style="display:flex;gap:14px;align-items:center">
+          <div class="badge" id="mBadge">AA</div>
+          <div><div class="name" id="mName">Loading...</div><div class="sub" id="mSub">&nbsp;</div></div>
+        </div>
+        <div><div class="px" id="mPx">&nbsp;</div><div class="sub num" id="mChg" style="text-align:right">&nbsp;</div></div>
+      </div>
+      <div class="spark" id="mSpark" aria-hidden="true"></div>
+      <dl class="app-stats">
+        <div><dt>Market cap</dt><dd id="mCap">-</dd></div>
+        <div><dt>P/E</dt><dd id="mPe">-</dd></div>
+        <div><dt>Beta</dt><dd id="mBeta">-</dd></div>
+        <div><dt>52w range</dt><dd id="mRange" style="font-size:.9rem">-</dd></div>
+      </dl>
+      <div class="app-tabs"><span>Overview</span><span>Financials</span><span>Valuation</span><span>Risk</span><span>Technicals</span><span>Analysts</span></div>
+    </div>
+    <div class="float f1" id="fA" hidden><small>Analyst consensus</small><b id="fAv">-</b></div>
+    <div class="float f2" id="fB" hidden><small>Max drawdown, 3 years</small><b id="fBv" class="down">-</b></div>
+  </div>
+  <p class="muted" style="font-size:.78rem;margin-top:14px">Live data for Apple, shown as an example.</p>
+  <div class="cover"><span>United States</span><span>India (NSE, BSE)</span><span>United Kingdom</span><span>Japan</span><span>Canada</span><span>and more</span></div>
+</section>
+{% endblock %}
+
+{% block fullwidth %}
+<section class="band">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:46px"><span class="eyebrow">Everything in one workspace</span><h2>The analyst's toolkit, without the tab sprawl</h2></div>
+    <div class="grid2">
+      <a class="fcard" href="/stock/AAPL?tab=financials" style="text-decoration:none!important;color:inherit">
+        <div class="art"><svg width="260" height="130" viewBox="0 0 260 130" aria-hidden="true"><g fill="var(--accent)"><rect x="20" y="70" width="30" height="50" rx="6" opacity=".35"/><rect x="66" y="52" width="30" height="68" rx="6" opacity=".5"/><rect x="112" y="38" width="30" height="82" rx="6" opacity=".7"/><rect x="158" y="20" width="30" height="100" rx="6"/></g><path d="M20 48c50-6 80-26 168-36" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 7"/></svg></div>
+        <h3>Financials that tell a story</h3><p>Income statement, balance sheet and cash flow with year-over-year change, margin trends and one-click CSV export.</p><span class="more">Open financials →</span>
+      </a>
+      <a class="fcard" href="/compare?symbols=AAPL,MSFT,NVDA" style="text-decoration:none!important;color:inherit">
+        <div class="art"><svg width="260" height="130" viewBox="0 0 260 130" aria-hidden="true"><path d="M10 100c40-6 60-38 100-40s70-34 140-50" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round"/><path d="M10 108c50-4 70-18 110-24s80-6 130-26" fill="none" stroke="var(--ink)" stroke-width="3.5" stroke-linecap="round" opacity=".6"/><path d="M10 114c60 0 90-6 130-10s70 0 110-8" fill="none" stroke="var(--up)" stroke-width="3.5" stroke-linecap="round" opacity=".7"/></svg></div>
+        <h3>Compare up to six, fairly</h3><p>Rebased performance, risk and fundamentals side by side, plus a correlation map so you know if two holdings are really one bet.</p><span class="more">Compare tickers →</span>
+      </a>
+      <a class="fcard" href="/stock/AAPL?tab=valuation" style="text-decoration:none!important;color:inherit">
+        <div class="art"><svg width="260" height="130" viewBox="0 0 260 130" aria-hidden="true"><g stroke-linecap="round"><line x1="30" y1="34" x2="230" y2="34" stroke="var(--rule-strong)" stroke-width="6"/><line x1="30" y1="34" x2="150" y2="34" stroke="var(--accent)" stroke-width="6"/><circle cx="150" cy="34" r="11" fill="var(--card)" stroke="var(--accent)" stroke-width="3"/><line x1="30" y1="66" x2="230" y2="66" stroke="var(--rule-strong)" stroke-width="6"/><line x1="30" y1="66" x2="100" y2="66" stroke="var(--accent)" stroke-width="6"/><circle cx="100" cy="66" r="11" fill="var(--card)" stroke="var(--accent)" stroke-width="3"/><line x1="30" y1="98" x2="230" y2="98" stroke="var(--rule-strong)" stroke-width="6"/><line x1="30" y1="98" x2="190" y2="98" stroke="var(--accent)" stroke-width="6"/><circle cx="190" cy="98" r="11" fill="var(--card)" stroke="var(--accent)" stroke-width="3"/></g></svg></div>
+        <h3>Valuation you can argue with</h3><p>An interactive DCF with a sensitivity table, and a reverse-DCF that shows the growth today's price is already assuming.</p><span class="more">Try the DCF →</span>
+      </a>
+      <a class="fcard" href="/evidence" style="text-decoration:none!important;color:inherit">
+        <div class="art"><svg width="260" height="130" viewBox="0 0 260 130" aria-hidden="true"><line x1="30" y1="112" x2="230" y2="16" stroke="var(--rule-strong)" stroke-width="2.5" stroke-dasharray="5 6"/><path d="M30 66l40-2 40 3 40-4 40 2 40-3" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round"/><g fill="var(--accent)"><circle cx="30" cy="66" r="5"/><circle cx="70" cy="64" r="7"/><circle cx="110" cy="67" r="9"/><circle cx="150" cy="63" r="9"/><circle cx="190" cy="65" r="7"/><circle cx="230" cy="62" r="5"/></g></svg></div>
+        <h3>Forecasts, with receipts</h3><p>Our prediction model is re-tested through time on dozens of stocks and graded against the laziest possible baseline. The result is public.</p><span class="more">See the evidence →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="band tint">
+  <div class="wrap">
+    <div class="showcase">
+      <div class="text">
+        <span class="eyebrow">Valuation</span>
+        <h2>Know what you have to believe</h2>
+        <p class="lede">Every price implies a story about growth. Drag the sliders to see how fragile or robust that story is, then let the reverse-DCF tell you what the market already assumes.</p>
+        <ul><li>Two-stage DCF with terminal-value warnings</li><li>Sensitivity grid across discount rate and terminal growth</li><li>Market-implied growth solved for you</li></ul>
+        <a class="btn" href="/stock/AAPL?tab=valuation">Open the calculator</a>
+      </div>
+      <div class="stage">
+        <div class="card2">
+          <div class="muted" style="font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase">Interactive demo</div>
+          <div class="slider"><label for="dg">Growth, 10 yrs</label><input id="dg" type="range" min="0" max="0.3" step="0.005" value="0.1"><span class="num" id="dgv"></span></div>
+          <div class="slider"><label for="dd">Discount rate</label><input id="dd" type="range" min="0.06" max="0.14" step="0.0025" value="0.09"><span class="num" id="ddv"></span></div>
+          <dl class="out"><div><dt>Value / share</dt><dd id="dVal">-</dd></div><div><dt>vs $150 price</dt><dd id="dMos">-</dd></div></dl>
+          <p class="tag-note">Illustrative numbers: $100B free cash flow, 15B shares, $50B cash, $100B debt.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase flip">
+      <div class="stage">
+        <div class="card2">
+          <div class="muted" style="font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase">Live: AAPL risk, 3 years</div>
+          <div class="spark" id="rSpark" style="height:150px;margin:12px 0" aria-hidden="true"></div>
+          <dl class="out"><div><dt>Volatility</dt><dd id="rVol">-</dd></div><div><dt>Beta vs SPY</dt><dd id="rBeta">-</dd></div><div><dt>VaR 95%</dt><dd id="rVar">-</dd></div></dl>
+        </div>
+      </div>
+      <div class="text">
+        <span class="eyebrow">Risk</span>
+        <h2>See the downside before the upside</h2>
+        <p class="lede">Volatility, drawdowns, beta and tail risk against the index you choose. Know how much a position can hurt, and whether it is just the market in disguise.</p>
+        <ul><li>Drawdown from peak and rolling volatility</li><li>Beta, correlation and alpha against any benchmark</li><li>Value-at-risk and the worst days on record</li></ul>
+        <a class="btn" href="/stock/AAPL?tab=risk">Explore risk</a>
+      </div>
+    </div>
+
+    <div class="showcase">
+      <div class="text">
+        <span class="eyebrow">Evidence</span>
+        <h2>We graded our own forecasts. Here is the grade.</h2>
+        <p class="lede">A model that says "70% up" should be right about 70% of the time. We tested ours through time on many stocks. Its confidence told us nothing, and we publish that.</p>
+        <ul><li>Walk-forward testing: no peeking at the future</li><li>Compared with simply guessing "up" every day</li><li>Intervals, calibration and per-stock results</li></ul>
+        <a class="btn" href="/evidence">Read the evidence</a>
+      </div>
+      <div class="stage">
+        <div class="card2">
+          <div class="muted" style="font-size:.78rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase">Calibration: what the model said vs what happened</div>
+          <div id="cal" style="margin:12px 0" aria-hidden="true"></div>
+          <dl class="out"><div><dt>Model accuracy</dt><dd id="eAcc">-</dd></div><div><dt>"Always up"</dt><dd id="eUp">-</dd></div><div><dt>AUC (0.5 = none)</dt><dd id="eAuc">-</dd></div></dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="stats">
+      <div><b>9</b><span>research views for every company</span></div>
+      <div><b id="sN">45</b><span>stocks in our forecast audit</span></div>
+      <div><b id="sP">56K</b><span>out-of-sample predictions graded</span></div>
+      <div><b>6</b><span>tickers side by side</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="band tint">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:40px"><span class="eyebrow">Honest by design</span><h2>Built so you can check the work</h2></div>
+    <div class="trio">
+      <div class="item"><div class="ico"><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div><h3>Every check shows its rule</h3><p>The quick screen never hides behind a score. Each pass or fail states the threshold it used, so you can disagree with it.</p></div>
+      <div class="item"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>No peeking at the future</h3><p>Models are trained on the past and scored on later data only, then compared with trivial baselines. A flattering demo is not evidence.</p></div>
+      <div class="item"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></div><h3>Answers stay on the page</h3><p>The built-in assistant only uses numbers shown on your screen and our glossary. It says so when it does not know, rather than inventing a fact.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding-top:60px">
+  <div class="wrap">
+    <div class="cta">
+      <h2>Pick a company. See what the numbers say.</h2>
+      <p>No account needed to research. Sign in only to keep a watchlist.</p>
+      <a class="btn large" href="/stock/AAPL">Start researching</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script type="module">
+  import { h, mount, s, $ } from '/static/js/core/dom.js';
+  import { api } from '/static/js/core/api.js';
+  import { tickerSearch } from '/static/js/components/tickerSearch.js';
+  import { compact, pct, num, signedPct, currencySymbol } from '/static/js/core/format.js';
+  import { dcfValue } from '/static/js/core/dcf.js';
+
+  const go = (sym) => sym && location.assign('/stock/' + sym);
+  $('#homeSearch').append(tickerSearch({ onPick: go, autofocus: false, width: 'min(460px, 86vw)', placeholder: 'Search a company or ticker, e.g. Nvidia, TCS.NS' }));
+  mount($('#quick'), ...['AAPL', 'NVDA', 'MSFT', 'RELIANCE.NS', 'HDFCBANK.NS'].map((x) => h('button', { class: 'chip', type: 'button', onclick: () => go(x) }, x)));
+
+  /** Smooth area line from values, scaled to its box. */
+  function spark(el, values, { color = 'accent', fill = true } = {}) {
+    const W = 600, H = 150, lo = Math.min(...values), hi = Math.max(...values);
+    const pts = values.map((v, i) => [(i / (values.length - 1)) * W, H - 8 - ((v - lo) / (hi - lo || 1)) * (H - 20)]);
+    const d = pts.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('');
+    const id = 'g' + Math.random().toString(36).slice(2, 7);
+    const svg = s('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'none' },
+      s('defs', {}, s('linearGradient', { id, x1: 0, y1: 0, x2: 0, y2: 1 }, s('stop', { offset: '0%', 'stop-color': `var(--${color})`, 'stop-opacity': '.28' }), s('stop', { offset: '100%', 'stop-color': `var(--${color})`, 'stop-opacity': '0' }))),
+      fill ? s('path', { d: d + `L${W} ${H}L0 ${H}Z`, fill: `url(#${id})` }) : null,
+      s('path', { d, fill: 'none', style: `stroke:var(--${color});stroke-width:3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke` }));
+    el.replaceChildren(svg);
+  }
+
+  // ---- hero mockup, live AAPL (falls back to a quiet placeholder if offline)
+  (async () => {
+    try {
+      const [p, hist, f] = await Promise.all([api.profile('AAPL'), api.history('AAPL', 200), api.fundamentals('AAPL').catch(() => null)]);
+      const cs = currencySymbol(p.currency);
+      $('#mBadge').textContent = p.symbol.slice(0, 2);
+      $('#mName').textContent = `${p.name} (${p.symbol})`;
+      $('#mSub').textContent = [p.exchange, p.sector].filter(Boolean).join(' · ');
+      $('#mPx').textContent = cs + p.price.toFixed(2);
+      const chg = $('#mChg'); chg.textContent = `${signedPct(p.change_pct)} today`; chg.className = 'sub num ' + (p.change >= 0 ? 'up' : 'down');
+      spark($('#mSpark'), hist.close, { color: hist.close.at(-1) >= hist.close[0] ? 'up' : 'down' });
+      $('#mCap').textContent = compact(p.market_cap, p.currency);
+      const pe = f?.groups?.flatMap((g) => g.items).find((i) => i.key === 'trailingPE')?.value;
+      $('#mPe').textContent = pe ? pe.toFixed(1) + 'x' : '-';
+      $('#mBeta').textContent = p.beta != null ? p.beta.toFixed(2) : '-';
+      $('#mRange').textContent = `${cs}${p.week52_low?.toFixed(0)} to ${cs}${p.week52_high?.toFixed(0)}`;
+    } catch { $('#mName').textContent = 'Live preview unavailable'; }
+  })();
+  api.analysts('AAPL').then((a) => {
+    const t = a.price_targets?.mean;
+    $('#fAv').textContent = `${(a.consensus.key || 'n/a').replace('_', ' ')}${t ? ' · target $' + t.toFixed(0) : ''}`;
+    $('#fA').hidden = false;
+  }).catch(() => {});
+  api.riskReport('AAPL', '', 3).then((r) => {
+    $('#fBv').textContent = pct(r.stats.max_drawdown_pct, 0); $('#fB').hidden = false;
+    $('#rVol').textContent = pct(r.stats.annualized_volatility_pct, 1);
+    $('#rBeta').textContent = r.stats.beta != null ? num(r.stats.beta, 2) : '-';
+    $('#rVar').textContent = pct(r.stats.var95_1d_pct, 2);
+    spark($('#rSpark'), r.series.drawdown.values, { color: 'down' });
+  }).catch(() => {});
+
+  // ---- interactive DCF demo (illustrative inputs)
+  const base = { fcf: 100e9, terminal: 0.025, years: 10, cash: 50e9, debt: 100e9, shares: 15e9 };
+  const draw = () => {
+    const g = +$('#dg').value, d = +$('#dd').value;
+    $('#dgv').textContent = (g * 100).toFixed(1) + '%'; $('#ddv').textContent = (d * 100).toFixed(2) + '%';
+    const r = dcfValue({ ...base, growth: g, discount: d });
+    $('#dVal').textContent = r ? '$' + r.perShare.toFixed(0) : '-';
+    const mos = r ? (r.perShare / 150 - 1) * 100 : null;
+    const el = $('#dMos'); el.textContent = mos == null ? '-' : signedPct(mos, 0); el.className = mos >= 0 ? 'up' : 'down';
+  };
+  $('#dg').addEventListener('input', draw); $('#dd').addEventListener('input', draw); draw();
+
+  // ---- evidence summary
+  api.evidence().then((d) => {
+    const a = d.aggregate.price;
+    $('#eAcc').textContent = pct(a.mean_accuracy * 100, 1); $('#eUp').textContent = pct(a.mean_always_up_accuracy * 100, 1); $('#eAuc').textContent = a.mean_auc.toFixed(3);
+    $('#sN').textContent = String(a.n_tickers);
+    const n = d.tickers.reduce((t, x) => t + x.price.n_test_days, 0); $('#sP').textContent = Math.round(n / 1000) + 'K';
+    const W = 420, H = 190, M = 30, x = (v) => M + v * (W - 2 * M), y = (v) => H - M - v * (H - 2 * M);
+    const bins = d.calibration.price.filter((b) => b.n >= 20);
+    const svg = s('svg', { viewBox: `0 0 ${W} ${H}`, style: 'width:100%;height:auto' },
+      s('line', { x1: x(0), y1: y(0), x2: x(1), y2: y(1), style: 'stroke:var(--rule-strong);stroke-width:2;stroke-dasharray:5 6' }),
+      s('text', { x: x(0.62), y: y(0.7), style: 'fill:var(--ink-3);font:600 11px var(--font-sans)', transform: `rotate(-24 ${x(0.62)} ${y(0.7)})` }, 'perfect calibration'),
+      s('polyline', { points: bins.map((b) => `${x(b.mean_pred)},${y(b.actual_up)}`).join(' '), fill: 'none', style: 'stroke:var(--accent);stroke-width:3;stroke-linejoin:round' }),
+      ...bins.map((b) => s('circle', { cx: x(b.mean_pred), cy: y(b.actual_up), r: 5, style: 'fill:var(--accent)' })));
+    $('#cal').replaceChildren(svg);
+  }).catch(() => { $('#cal').textContent = 'Run the walk-forward job to populate this chart.'; });
+</script>
+{% endblock %}

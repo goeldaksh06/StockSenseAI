@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Method{% endblock %}
+{% block content %}
+<article class="prose" style="padding-top:40px">
+  <div class="eyebrow">Method</div>
+  <h1>How the audit works</h1>
+  <p>The easiest way to make a stock model look brilliant is to let it see the future. This project is organised around not doing that.</p>
+
+  <h2>1. Data and features</h2>
+  <p>Daily prices from Yahoo Finance, turned into 21 features: RSI, MACD, Bollinger Bands, ATR, moving averages and lagged returns. Features are computed fresh on each request.</p>
+
+  <h2>2. Chronological split</h2>
+  <p>Data is split by date into train, validation and test, never shuffled. Scalers are fit on training data only. The test period is strictly later than anything the model learned from.</p>
+
+  <h2>3. Baselines first</h2>
+  <p>Every model is compared with <em>previous close</em> (tomorrow equals today), a moving average and linear regression. A complex model has to earn its complexity.</p>
+
+  <h2>4. Backtest</h2>
+  <p>The model's daily up or down call becomes a long-only strategy with transaction costs, measured against buying and holding. Win rate is counted only on days the strategy was actually invested.</p>
+
+  <h2>5. A finding we kept</h2>
+  <p>XGBoost trained to predict raw next-day <em>price</em> lost badly to the naive baseline, because tree models cannot extrapolate beyond the price range they trained on. Reframing the target as next-day <em>return</em> and <em>direction</em> fixed that failure.</p>
+  <p>Fixing it did not create an edge. On the most recent runs the direction model is right about 45 to 50 percent of the time, and its backtest trails buy and hold. Earlier notes on this project suggested a competitive Sharpe ratio; recent runs do not support that, so treat any single backtest with suspicion.</p>
+
+  <h2>6. Across many stocks</h2>
+  <p>One stock proves little, so the <a href="/evidence">Evidence page</a> retrains the direction model through time on a basket of about 45 stocks and compares it with simply guessing "up". It reports the gap with a bootstrap interval, plus ranking skill (AUC) and whether the model's probabilities are trustworthy (Brier skill, calibration).</p>
+
+  <h2>Research data</h2>
+  <p>Company data (financial statements, ratios, analyst targets, ownership) comes from Yahoo Finance, an unofficial source that can be delayed or incomplete, especially for non-US listings. Treat it as a starting point and verify against filings. The DCF is a teaching tool: it shows what you would have to believe, not what a stock is worth.</p>
+
+  <h2>Limits</h2>
+  <ul>
+    <li>One stock and one test window is anecdote, not evidence.</li>
+    <li>Backtests ignore slippage, taxes and market impact.</li>
+    <li>The LLM briefing explains the numbers; it does not improve them.</li>
+  </ul>
+
+  <h2>Stack</h2>
+  <p class="mono" style="font-size:.85rem">FastAPI, SQLAlchemy, XGBoost, scikit-learn, yfinance, VADER sentiment, vanilla ES modules on the front end (no build step).</p>
+</article>
+{% endblock %}

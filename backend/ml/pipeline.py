@@ -11,6 +11,7 @@ import pandas as pd
 import yfinance as yf
 from datetime import datetime
 
+from backend.data_fetch import download
 from ta.momentum import RSIIndicator, ROCIndicator
 from ta.trend import MACD, SMAIndicator, EMAIndicator
 from ta.volatility import BollingerBands, AverageTrueRange
@@ -50,13 +51,17 @@ XGB_CLASSIFIER_PARAMS = dict(
 )
 
 
+class SymbolNotFoundError(ValueError):
+    """Yahoo Finance has no price data for this ticker (typo, delisted, unsupported)."""
+
+
 def _flatten_yf_columns(data: pd.DataFrame) -> pd.DataFrame:
     if isinstance(data.columns, pd.MultiIndex):
         data.columns = [c[0] for c in data.columns]
     return data.astype(float)
 
 
-def _download_with_retry(symbol: str, retries: int = 2, **kwargs) -> pd.DataFrame:
+def _download_with_retry(symbol: str, retries: int = 1, **kwargs) -> pd.DataFrame:
     """yfinance occasionally returns an empty frame on a transient Yahoo
     Finance hiccup rather than raising — retry a couple times before giving
     up, since a live demo shouldn't hard-fail on a one-off blip.
@@ -64,15 +69,17 @@ def _download_with_retry(symbol: str, retries: int = 2, **kwargs) -> pd.DataFram
     last_error = None
     for attempt in range(retries + 1):
         try:
-            data = yf.download(symbol, **kwargs)
+            data = download(symbol, **kwargs)
             if not data.empty:
                 return data
-            last_error = ValueError(f"No data found for {symbol}")
+            last_error = SymbolNotFoundError(f"No price data found for '{symbol}'. Check the ticker symbol.")
         except Exception as e:
             last_error = e
         if attempt < retries:
             time.sleep(1.5 * (attempt + 1))
-    raise last_error
+    if isinstance(last_error, SymbolNotFoundError):
+        raise last_error
+    raise RuntimeError(f"Could not fetch data for {symbol}: {last_error}")
 
 
 def load_features(symbol: str, start: str = "2018-01-01", end: str | None = None) -> pd.DataFrame:
@@ -268,6 +275,7 @@ def compare_models(symbol: str, start: str = "2018-01-01", end: str | None = Non
         "test_period": {
             "start": str(test_df.index[0].date()),
             "end": str(test_df.index[-1].date()),
+            "n_days": int(len(test_df)),
         },
         "models": results,
     }
@@ -351,6 +359,13 @@ def compare_models_v2(symbol: str, start: str = "2018-01-01", end: str | None = 
         "directional_accuracy": float(accuracy_score(true_direction_test, pred_direction)),
     }
 
+    # Naive direction baseline: always call "up". Beating a coin flip is not enough if
+    # the stock simply rose on most test days.
+    results["always_up"] = {
+        "directional_accuracy": float(np.mean(true_direction_test == 1)),
+        "accuracy": float(np.mean(true_direction_test == 1)),
+    }
+
     print(f"\nModel comparison v2 (price vs return vs direction targets) for {symbol}")
     print("-" * 90)
     for name, m in results.items():
@@ -362,8 +377,8 @@ def compare_models_v2(symbol: str, start: str = "2018-01-01", end: str | None = 
             )
         else:
             print(
-                f"{name:<26}accuracy={m['accuracy']:.2%} precision={m['precision']:.2%} "
-                f"recall={m['recall']:.2%} dir_acc={m['directional_accuracy']:.2%}"
+                f"{name:<26}accuracy={m['accuracy']:.2%} precision={m.get('precision', float('nan')):.2%} "
+                f"recall={m.get('recall', float('nan')):.2%} dir_acc={m['directional_accuracy']:.2%}"
             )
     print("-" * 90)
 
@@ -372,6 +387,7 @@ def compare_models_v2(symbol: str, start: str = "2018-01-01", end: str | None = 
         "test_period": {
             "start": str(test_df.index[0].date()),
             "end": str(test_df.index[-1].date()),
+            "n_days": int(len(test_df)),
         },
         "models": results,
     }

@@ -4,16 +4,25 @@ FastAPI app that predicts next-day stock moves with ML, **honestly benchmarks th
 
 > Educational project, not financial advice.
 
+## What it is
+A research platform for any listed stock (US, India, most major exchanges, via Yahoo Finance) plus an honest test of whether price-based forecasting works.
+
+- **Research** (`/stock/{ticker}`): Overview with a rule-based screen, Financials (income, balance sheet, cash flow, annual/quarterly, YoY, CSV export), Valuation (multiples, analyst targets, interactive DCF with sensitivity table and reverse-DCF), Risk (volatility, drawdown, beta/correlation/alpha vs an index, VaR/CVaR), Technicals, Analysts (targets, ratings, estimates, earnings surprises), Ownership and insiders, News tone, Forecast.
+- **Compare** (`/compare`): up to six tickers: rebased performance, risk, fundamentals side by side, correlation map.
+- **Evidence** (`/evidence`): walk-forward test of the direction model across ~45 stocks versus an "always up" baseline, with bootstrap intervals, AUC, Brier skill and calibration.
+- **Forecast lab** (`/analyze`, `/models`, `/backtest`): next-day model call, AI briefing, model scoreboard, backtest. Labelled experimental.
+- **Ask** copilot on every page: answers only from the page's data, the glossary and the method notes.
+
 ## Honest results
-On held-out data (e.g. AAPL, ~14 months), the ML models do **not** reliably beat the naive "tomorrow = today" baseline on price, and direction accuracy is ~45–50% (≈ coin flip). The long-only backtest underperforms buy-and-hold. The comparison endpoints exist precisely to surface this rather than hide it.
+Tested through time on dozens of stocks, the direction model does not reliably beat "always up", and its probabilities are overconfident. See the Evidence page (regenerate with `python -m backend.ml.walkforward`, about 20 minutes).
 
 ## Features
 - Auth (JWT, bcrypt, min 8-char passwords, login rate limiting) and per-user watchlist
-- `/ml/predict` — next-day price/direction with RSI, MACD, EMA indicators and sentiment
-- `/analysis/compare/{symbol}` — XGBoost / linear regression / moving average / previous-close on a chronological test split
-- `/analysis/backtest/{symbol}` — strategy vs buy-and-hold (win rate counts only days invested)
-- `/briefing/{symbol}` — LLM explanation (Groq, Anthropic or OpenAI)
-- `/history/{symbol}`, `/health`, dashboard at `/dashboard`, interactive docs at `/docs`
+- `/research/*` data endpoints (cached, 404 for unknown tickers), `/analysis/*`, `/ml/predict`, `/briefing/{symbol}`, `/copilot`
+- `/health`, interactive API docs at `/docs`
+
+## Frontend
+Multi-page, no build step: Jinja templates in `frontend/templates`, vanilla ES modules in `frontend/static/js` (`core/` API, auth, storage, formatting, DCF maths, CSV; `components/` charts, tables, ticker search, copilot; `pages/` one module per page and `pages/stock/` one module per research tab, loaded on demand).
 
 ## Run locally
 ```bash

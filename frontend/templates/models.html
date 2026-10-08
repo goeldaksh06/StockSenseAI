@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Models{% endblock %}
+{% block content %}
+<div class="labnav seg" role="navigation" aria-label="Forecast lab" style="margin:22px 0 4px">
+  <a href="/analyze" >Analyze</a><a href="/models" aria-current="page">Models</a><a href="/backtest" >Backtest</a>
+</div>
+<div class="banner" style="margin:12px 0">Experimental. Tested across 45 stocks, the forecast model has not beaten simply assuming "up". See <a href="/evidence">Evidence</a>.</div>
+<div class="eyebrow">Model evaluation</div>
+<h2>Do the models beat doing nothing?</h2>
+<p class="prose muted">Each model is trained on the past and scored on a held-out, later test period. The yardstick is the naive baseline: tomorrow equals today.</p>
+<div id="bar"></div><div id="out"></div>
+{% endblock %}
+{% block scripts %}
+<script type="module" src="/static/js/pages/models.js"></script>
+{% endblock %}

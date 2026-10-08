@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Watchlist{% endblock %}
+{% block content %}
+<div class="eyebrow">Your watchlist</div>
+<h2>Tickers you follow</h2>
+<div id="out"><p class="state">Loading...</p></div>
+{% endblock %}
+{% block scripts %}
+<script type="module" src="/static/js/pages/watchlist.js"></script>
+{% endblock %}

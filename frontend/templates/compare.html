@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Compare{% endblock %}
+{% block content %}
+<div class="eyebrow">Compare</div>
+<h2>Side by side, on the same footing</h2>
+<p class="prose muted">Add two to six tickers. Performance is rebased to 100 on the first common date, and risk and fundamentals sit in one table.</p>
+<div id="picker" class="toolbar"></div>
+<div id="out"></div>
+{% endblock %}
+{% block scripts %}<script type="module" src="/static/js/pages/compare.js"></script>{% endblock %}

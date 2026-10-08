@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}{{ symbol or 'Research' }}{% endblock %}
+{% block content %}
+<div id="searchRow" class="toolbar" style="border:0"></div>
+<div id="head"></div>
+<div id="tabs" class="tabs" role="tablist" hidden></div>
+<div id="panel" role="tabpanel" style="padding-top:22px"><p class="state">Search for any listed company by name or ticker. Examples: AAPL, NVDA, RELIANCE.NS, HDFCBANK.NS, SHEL.L.</p></div>
+{% endblock %}
+{% block scripts %}<script type="module" src="/static/js/pages/stock.js"></script>{% endblock %}

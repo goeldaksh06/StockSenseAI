@@ -1,0 +1,29 @@
+:root {
+  /* surfaces */
+  --paper: #f6f6fb; --card: #ffffff; --paper-2: #eeeef7; --tint: #eef0ff; --rule: #e3e4f0; --rule-strong: #cfd1e4;
+  /* text */
+  --ink: #1b1b2f; --ink-2: #4b4d68; --ink-3: #8a8ca6;
+  /* brand + data colours */
+  --accent: #4f5fe8; --accent-ink: #ffffff; --accent-soft: #e6e9ff;
+  --up: #0f9d6b; --down: #e0484e; --warn: #c9760d;
+  /* shape */
+  --r-sm: 10px; --r-md: 14px; --r-lg: 22px; --r-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(27, 27, 47, .05), 0 1px 3px rgba(27, 27, 47, .04);
+  --shadow-md: 0 10px 30px -12px rgba(46, 52, 120, .22), 0 2px 6px rgba(27, 27, 47, .05);
+  --shadow-lg: 0 30px 70px -28px rgba(46, 52, 120, .38), 0 6px 16px rgba(27, 27, 47, .06);
+  --hero-grad: linear-gradient(135deg, #dfe3ff 0%, #ece6ff 45%, #dff2ff 100%);
+  /* type */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: var(--font-sans);
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+}
+:root[data-theme="dark"] {
+  --paper: #0d0e1a; --card: #161729; --paper-2: #1d1f35; --tint: #1c2040; --rule: #272942; --rule-strong: #3a3d5e;
+  --ink: #eceefb; --ink-2: #b2b5d3; --ink-3: #7c7fa3;
+  --accent: #8b97ff; --accent-ink: #0d0e1a; --accent-soft: #232855;
+  --up: #3ecf9a; --down: #ff7a80; --warn: #e8a64a;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .4);
+  --shadow-md: 0 12px 30px -12px rgba(0, 0, 0, .6);
+  --shadow-lg: 0 30px 70px -28px rgba(0, 0, 0, .8);
+  --hero-grad: linear-gradient(135deg, #1b2050 0%, #2a1f55 50%, #14304d 100%);
+}
